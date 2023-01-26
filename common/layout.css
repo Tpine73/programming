@@ -1,0 +1,106 @@
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<style>
+@charset "UTF-8";
+      #container {
+        float: left;
+        width: 1800px;
+        margin: 30px auto;
+        border: 10px solid #bcbcbc;
+      }
+      #topBox {
+        float: left;
+        width: 850px;
+        display: block;
+        margin: 0px auto;
+        padding: 10px;
+        border: 0px solid #bcbcbc;
+      }
+      #centerBox {
+        clear: left;
+        width: 1500px;
+        display: inline-block;
+        cursor: Default;
+        margin: 0px auto;
+        padding: 10px;
+        border: 0px solid #bcbcbc;
+      }
+      #bottomBox {
+        clear: left;
+        width: 807px;
+        display: inline-block;
+        border: 0px solid #bcbcbc;
+      }
+      #codeBox {
+        clear: left;
+        width: auto;
+        display: block;
+        padding: 1px;
+        border: 0px solid #bcbcbc;
+      }
+      #floatingBox {
+        width: auto;
+        position : fixed;
+        left : 600px;
+        top: 50px;
+        height: 50px;
+        margin: 0px auto;
+        border: 0px solid #bcbcbc;
+      }
+      #outputBox {
+        background: black;
+        padding: 10px;
+        color: white;
+        border: 0px solid #bcbcbc;
+      }
+      .outputBox_invisible
+      {
+        height : 0px ; 
+        padding: 0px;
+        margin : 0px;
+      }
+      .outputBox_visible
+      {
+        height: 30px ; 
+        padding: 0px;
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+      #intermediateResult {
+        padding: 5px;
+        min-height: 10px;
+        border: 0px solid #bcbcbc;
+      }
+      #imageBox{
+      }
+      #sequenceBox
+      {
+      }
+      #myCanvas{
+        position: absolute;
+        width : "200";
+        height : "100";
+      }
+      .unselectable
+      {
+        -webkit-user-select: none; 
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none; 
+        -o-user-select: none; 
+        user-select: none;
+      }
+      .green
+      {
+        color : #009900;
+      }
+      .codeClass
+      {
+        line-height: 150% ; 
+        margin-top : 5; 
+        margin-bottom : 5;
+        tab-size: 45px;
+        display: inline;
+      }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
