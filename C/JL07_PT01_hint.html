@@ -267,8 +267,7 @@ function move_floatingBox( codeId )
 {
 	 var focusedLine = document.getElementById( codeId );
 	
-	$('.window').animate( { scrollTop : $(focusedLine).offset().top - 200  }, 1 );
-
+	 window.scrollTo(0, 250);	
 	 var floatingBox = document.getElementById( "floatingBox" );
 	 floatingBox.setAttribute( "style", "top:" + focusedLine.offsetTop - ( document.body.clientHeight / 2 )  + "px; left:" + 800 + "px;");
 }
