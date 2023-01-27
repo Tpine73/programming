@@ -266,7 +266,7 @@ function update_bg_color( id, mouseover )
 function move_floatingBox( codeId )
 {
 	 var focusedLine = document.getElementById( codeId );
-	 window.scrollTo({left:0, top:500})
+	 window.scrollTo( {left:0, top:(focusedLine.offsetTop - 200)} )
 	 var floatingBox = document.getElementById( "floatingBox" );
 	 floatingBox.setAttribute( "style", "top:" + focusedLine.offsetTop - ( document.body.clientHeight / 2 )  + "px; left:" + 800 + "px;");
 }
