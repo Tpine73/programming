@@ -127,6 +127,7 @@ function initialize()
 		}
 		
 		update_view( 0, 0 );
+		timer_id = setTimeout( "onTimeEvent()", 500 );
 }
 
 function getStyle( styleCode )
@@ -223,7 +224,7 @@ function update_image( currentTurn )
 	else if ( imgIdx >= 0 )
 	{
 		var imageBox = document.getElementById( 'imageBox' );
-		imageBox.src = "./img/" + info[ imgIdx ][ IMAGE ];
+		imageBox.src = "https://raw.githubusercontent.com/shyProgrammer351/image/main/" + info[ imgIdx ][ IMAGE ];
 		imageBox.width = imageBox.naturalWidth / 2;
 	}
 }
@@ -255,7 +256,7 @@ function update_bg_color( id, mouseover )
 function move_floatingBox( codeId )
 {
 	 var focusedLine = document.getElementById( codeId );
-	 $('html, body').animate( { scrollTop : ( focusedLine.offsetTop - 200 ) }, 1 );
+	 window.scrollTo( {left:0, top:(focusedLine.offsetTop - 200)} )
 	 var floatingBox = document.getElementById( "floatingBox" );
 	 floatingBox.setAttribute( "style", "top:" + focusedLine.offsetTop - ( document.body.clientHeight / 2 )  + "px; left:" + 800 + "px;");
 }
@@ -292,6 +293,20 @@ function on_key_down()
 		timestamp++;
 		update_view( timestamp, previousTurn );
 	 }
+}
+	
+var timer_id;
+function onTimeEvent()
+{
+	var previousTurn = timestamp;
+	timestamp++;
+	update_view( timestamp, previousTurn );
+	
+	// 2珥��� �ы�몄� 
+	if ( timestamp >= info.length )
+		clearTimeout( timer_id  );
+	else
+		timer_id = setTimeout( "onTimeEvent()", 500 );
 }
 
 </script>
@@ -421,6 +436,7 @@ function on_key_down()
 				</td>
 			</tr>
 		</table>	
+	<br><br>
 	</div>
 </div>
 </body>
