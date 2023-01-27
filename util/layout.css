@@ -1,1 +1,89 @@
-test
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<style>
+@charset "UTF-8";
+
+#container {
+	float: center;
+	width: 1050px;
+	margin: 5px auto;
+	border: 0px solid #bcbcbc;
+}
+
+#box {
+	float: left;
+	width: 810px;
+	margin: 0px auto;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	display: block;
+	border: 0px solid #bcbcbc;
+}
+
+#codeBox {
+	clear: left;
+	width: auto;
+	display: block;
+	padding-left: 20px;
+	border: 0px solid #ffbcbc;
+}
+.unselectable {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+.codeClass {
+	line-height: 150%;
+	margin-top: 5;
+	margin-bottom: 5;
+	tab-size: 45px;
+	display: inline;
+}
+
+#floatingBox {
+	position: fixed;
+	top: 50px;
+	right: 50px;
+	height: 50px;
+	margin: 0px auto;
+	border: 0px solid #bcbcbc;
+}
+
+#outputBox {
+	float: right;
+	background: black;
+	padding: 10px;
+	color: white;
+	border: 0px solid #bcbcbc;
+}
+.outputBox_invisible {
+	height: 0px;
+	padding: 0px;
+	margin: 0px;
+}
+.outputBox_visible {
+	height: 30px;
+	padding: 0px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+#intermediateResult {
+	float: right;
+	padding: 5px;
+	min-height: 10px;
+	border: 0px solid #bcbcbc;
+}
+
+#imageBox {
+	float: right;
+	padding: 5px;
+	min-height: 10px;
+	border: 0px solid #bcbcbc;
+}
+
+</style>
