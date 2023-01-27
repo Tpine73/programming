@@ -138,6 +138,7 @@ function initialize()
 		}
 		
 		update_view( 0, 0 );
+		timer_id = setTimeout( "onTimeEvent()", 500 );
 }
 
 function getStyle( styleCode )
@@ -303,6 +304,20 @@ function on_key_down()
 		timestamp++;
 		update_view( timestamp, previousTurn );
 	 }
+}
+	
+var timer_id;
+function onTimeEvent()
+{
+	var previousTurn = timestamp;
+	timestamp++;
+	update_view( timestamp, previousTurn );
+	
+	// 2초후 재호출 
+	if ( timestamp >= info.length )
+		clearTimeout( timer_id  );
+	else
+		timer_id = setTimeout( "onTimeEvent()", 500 );
 }
 
 </script>
