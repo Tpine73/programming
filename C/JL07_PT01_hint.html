@@ -266,7 +266,9 @@ function update_bg_color( id, mouseover )
 function move_floatingBox( codeId )
 {
 	 var focusedLine = document.getElementById( codeId );
-	 $('html, body').animate( { scrollTop : ( focusedLine.offsetTop - 200 ) }, 1 );
+	
+	$('.window').animate( { scrollTop : $(focusedLine).offset().top - 200  }, 1 );
+
 	 var floatingBox = document.getElementById( "floatingBox" );
 	 floatingBox.setAttribute( "style", "top:" + focusedLine.offsetTop - ( document.body.clientHeight / 2 )  + "px; left:" + 800 + "px;");
 }
