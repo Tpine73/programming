@@ -174,13 +174,13 @@ function on_key_down()
 {
 	 var keycode = event.keyCode;
 	 var previousTurn = timestamp;
-	 // pageUp / A
+	 /* pageUp / A */
 	 if ( ( ( keycode == 33 ) || ( keycode == 65 ) ) && ( timestamp > 0 ) )
 	 {
 		timestamp--;
 		update_view( timestamp, previousTurn );
 	 }
-	 // pageDown / D
+	 /* pageDown / D */
 	 else if ( ( ( keycode == 34  ) || ( keycode == 68 ) ) && ( timestamp < info.length ) )
 	 {
 		timestamp++;
@@ -195,13 +195,8 @@ function onTimeEvent()
 	timestamp++;
 	update_view( timestamp, previousTurn );
 	
-	// 2초후 재호출 
 	if ( timestamp < info.length )
 		timer_id = setTimeout( "onTimeEvent()", 500 );
 	else
-	{
 		clearTimeout( timer_id  );
-		timestamp = 0;
-		update_view( 0, 0 );
-	}
 }
