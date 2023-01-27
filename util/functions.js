@@ -196,8 +196,11 @@ function onTimeEvent()
 	update_view( timestamp, previousTurn );
 	
 	// 2초후 재호출 
-	if ( timestamp >= info.length )
-		clearTimeout( timer_id  );
-	else
+	if ( timestamp < info.length )
 		timer_id = setTimeout( "onTimeEvent()", 500 );
+	else
+	{
+		clearTimeout( timer_id  );
+		timestamp = 0;
+	}
 }
