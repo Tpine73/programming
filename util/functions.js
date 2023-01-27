@@ -202,5 +202,6 @@ function onTimeEvent()
 	{
 		clearTimeout( timer_id  );
 		timestamp = 0;
+		update_view( 0, 0 );
 	}
 }
