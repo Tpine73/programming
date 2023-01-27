@@ -1,7 +1,96 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../common/layout.css">
-<script>
+<!---link rel="stylesheet" href="../common/layout.css"-->
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<style>
+@charset "UTF-8";
 
+#container {
+	float: center;
+	width: 1050px;
+	margin: 5px auto;
+	border: 0px solid #bcbcbc;
+}
+
+#box {
+	float: left;
+	width: 810px;
+	margin: 0px auto;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	display: block;
+	border: 0px solid #bcbcbc;
+}
+
+#codeBox {
+	clear: left;
+	width: auto;
+	display: block;
+	padding-left: 20px;
+	border: 0px solid #ffbcbc;
+}
+.unselectable {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+.codeClass {
+	line-height: 150%;
+	margin-top: 5;
+	margin-bottom: 5;
+	tab-size: 45px;
+	display: inline;
+}
+
+#floatingBox {
+	position: fixed;
+	top: 50px;
+	right: 50px;
+	height: 50px;
+	margin: 0px auto;
+	border: 0px solid #bcbcbc;
+}
+
+#outputBox {
+	float: right;
+	background: black;
+	padding: 10px;
+	color: white;
+	border: 0px solid #bcbcbc;
+}
+.outputBox_invisible {
+	height: 0px;
+	padding: 0px;
+	margin: 0px;
+}
+.outputBox_visible {
+	height: 30px;
+	padding: 0px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+#intermediateResult {
+	float: right;
+	padding: 5px;
+	min-height: 10px;
+	border: 0px solid #bcbcbc;
+}
+
+#imageBox {
+	float: right;
+	padding: 5px;
+	min-height: 10px;
+	border: 0px solid #bcbcbc;
+}
+
+</style>
+
+<script>
 	var info = 
 		[
 [ "1",	"",	"blank.jpg" ], 
@@ -13,74 +102,257 @@
 [ "7",	"",	"" ],
 
 		];
+</script>
+<!---script src="../common/functions.js"--><!--script-->
+<script>
+function initialize()
+{
+	var strOutput = "";
+	for ( var i = 0 ; i < info.length ; i++ )
+		strOutput  += info[ i ][ OUTPUT ];
+	var countLines = strOutput.split('\n').length - 1;
+
+	var outputBox = document.getElementById( "outputBox" );
+	outputBox.innerText    = strOutput;
+	outputBox.style.height = ( countLines + 3 ) * 14.5 + "px";
+	outputBox.style.width  = outputBox.offsetWidth + "px";
+	outputBox.style.color  = "White";
+	outputBox.innerText    = "";
+
+	if( strOutput.trim() == "" )
+	{
+		outputBox.style.width = 0;
+		outputBox.style.height = 0;	
+		outputBox.style.padding = 0;
+	}
+		
+	update_view( 0, 0 );
+	setTimeout( "onTimeEvent()", 500 );
+}
+
+function getStyle( styleCode )
+{
+	if( styleCode == 'cbw' ) 
+		return 'border:5px solid #81DAF5;background:white;margin:0px;text-align:center';
+	else if( styleCode == 'lbw' ) 
+		return 'border:5px solid #81DAF5;background:white;margin:0px;text-align:left';
+	else if( styleCode == 'cgw' ) 
+		return 'border:5px solid #BCE55C;background:white;margin:0px;text-align:center';
+	else if( styleCode == 'lgw' ) 
+		return 'border:5px solid #BCE55C;background:white;margin:0px;text-align:left';
+	else if( styleCode == 'cb' ) 
+		return 'border:5px solid #81DAF5;background:#81DAF5;margin:0px;text-align:center';
+	else if( styleCode == 'lb' ) 
+		return 'border:5px solid #81DAF5;background:#81DAF5;margin:0px;text-align:left';
+	else if( styleCode == 'rb' ) 
+		return 'border:5px solid #81DAF5;background:#81DAF5;margin:0px;text-align:right';
+	else if( styleCode == 'cg' ) 
+		return 'border:5px solid #BCE55C;background:#BCE55C;margin:0px;text-align:center';
+	else if( styleCode == 'lg' ) 
+		return 'border:5px solid #BCE55C;background:#BCE55C;margin:0px;text-align:left';
+	else if( styleCode == 'rg' ) 
+		return 'border:5px solid #BCE55C;background:#BCE55C;margin:0px;text-align:right';
+	else
+		return 'border:5px solid #FFFFFF; background:white;margin:0px;text-align:left';
+}
+
+function delete_rows() 
+{
+	for( var variableTable = document.getElementById('variableTable');
+			 variableTable.rows.length > 0;
+			 variableTable.deleteRow(0) );
+}
+
+function insert_rows( imgIdx ) 
+{
+	var variableTable = document.getElementById( 'variableTable' );
+	for ( const line of info[ imgIdx ][ IMAGE ].split('\t') )	
+	{
+		var row = variableTable.insertRow( variableTable.rows.length ); 
+		for ( const pairOfVariableNameAndValue of line.split('$') )	
+		{
+			var pairOfStringAndStyle = pairOfVariableNameAndValue.split(':');
+			if ( pairOfStringAndStyle.length >= 2 )
+			{
+				var variableNameOrValue = pairOfStringAndStyle[0];
+				var styleCode = pairOfStringAndStyle[1];	
+
+				var cell = row.insertCell();
+				cell.innerHTML = "<pre style='margin:0;padding:0;'>" + variableNameOrValue + "</pre>";
+				cell.style = getStyle( styleCode );
+			}
+		}
+	}
+}
+
+function update_table( imgIdx ) 
+{
+	delete_rows(); 
+	insert_rows( imgIdx );
+}
+
+function update_image( currentTurn )
+{
+	var imgIdx = currentTurn;
+	for( ; ( imgIdx >= 0 ) && ( info[ imgIdx ][ IMAGE ].length < 1 ); imgIdx--);
+				
+	if ( ( imgIdx >= 0 ) && ( info[ imgIdx ][ IMAGE ].indexOf( "table\t" ) >= 0 ) ) 
+	{
+		document.getElementById( 'imageBox' ).width = 0;
+		update_table( imgIdx );
+	}
+	else if ( imgIdx >= 0 )
+	{
+		var imageBox = document.getElementById( 'imageBox' );
+		imageBox.src = "./img/" + info[ imgIdx ][ IMAGE ];
+		imageBox.width = imageBox.naturalWidth / 2;
+	}
+}
+
+function update_output( currentTurn )
+{
+	var strOutput = "";
+	for(var idx = 0 ; idx <= currentTurn ; idx++ )
+		strOutput += info[ idx ][ OUTPUT ];
+	document.getElementById( "outputBox" ).innerText = strOutput ;
+}
+
+function update_sequence( currentTurn )
+{
+	var strSequence = "";
+	for(var idx = 0 ; idx <= currentTurn ; idx++)
+		strSequence += info[ idx ][ SEQUENCE ] +" ";
+	document.getElementById( "sequenceBox" ).innerText = strSequence ;
+}
+
+function update_bg_color( id, mouseover )
+{
+	if( mouseover )
+		document.getElementById( id ).style.backgroundColor = "#BBBBBB";
+	else
+		document.getElementById( id ).style.backgroundColor = "white";
+}
+
+function move_floatingBox( codeId )
+{
+	 var focusedLine = document.getElementById( codeId );
+	 $('html, body').animate( { scrollTop : ( focusedLine.offsetTop - 200 ) }, 1 );
+	 var floatingBox = document.getElementById( "floatingBox" );
+	 floatingBox.setAttribute( "style", "top:" + focusedLine.offsetTop - ( document.body.clientHeight / 2 )  + "px; left:" + 800 + "px;");
+}
+
+const SEQUENCE = 0;
+const OUTPUT = 1;
+const IMAGE = 2;
+
+function update_view( currentTurn, previousTurn )
+{
+	if ( ( 0 <= currentTurn ) && ( currentTurn <= info.length ) )
+	{
+		update_image( currentTurn );
+		update_output( currentTurn );
+		update_sequence( currentTurn );
+
+		update_bg_color( "code" + info[ previousTurn][ SEQUENCE ], false );
+		update_bg_color( "code" + info[ currentTurn ][ SEQUENCE ], true );
+		move_floatingBox("code" + info[ currentTurn ][ SEQUENCE ]);
+	}
+}
+
+var timestamp = 0;
+function on_key_down() 
+{
+	 var keycode = event.keyCode;
+	 var previousTurn = timestamp;
+	 // pageUp
+	 if ( keycode == 65 ) 
+	 {
+		timestamp--;
+		update_view( timestamp, previousTurn );
+	 }
+	 // pageDown
+	 else if( keycode == 68 )
+	 {
+		timestamp++;
+		update_view( timestamp, previousTurn );
+	 }
+}
+
+function onTimeEvent()
+{
+	var previousTurn = timestamp;
+	timestamp++;
+	update_view( timestamp, previousTurn );
+	
+	if ( timestamp >= info.length - 1 )
+		clearTimeout( timer_id  );
+	// 2珥��� �ы�몄� 
+	else
+		setTimeout( "onTimeEvent()", 500 );
+}
 
 </script>
-<script src="../common/functions.js"></script>
-
-<body onload='initialize();' onkeydown='on_key_down()'>	 
-
-<br>      
-<table cellpadding='10' cellspacing='10' width='807' border='0'>
-	<tbody><tr>
-		<td width="807">
-			<h3> 박코치의 C 프로그래밍 </h3>
-		</td>
-	</tr>
-</tbody></table>
-<br>
-
+<body onload='initialize();' onkeydown='on_key_down()'>	     
 <div id = "container">
-	<div id = "topBox">
-<h4>문제</h4>
-<table table width='807' border='0' cellpadding='10' style= 'table-layout:fixed; word-break:break-all' >
-	<tr>
-		<td height = 'auto' >
-<pre  style='white-space: normal ; line-height: 1.5'>
-하트 모양을 출력하는 문제입니다 이를 해결하는 다음 프로그램을 해석하세요 실행순서 및 메모리 상태는 키보드의 A(이전)및 D(다음)를 눌러 확인하세요  </pre>
-		</td>
-	</tr>
-</table>
+	<table table width='830px' bgcolor='#808080' style='table-layout:fixed; word-break:break-all;'>
+		<tr>
+			<td align='center'>
+				<br><font color='white'><b><h3> 박코치의 C 프로그래밍 </h3></b></font><br>
+			</td>
+		</tr>
+	</table>
+	<div id = "box">
+		<h4>문제</h4>
+		<table width='807px' border='0' style='padding-left:10px; table-layout:fixed; word-break:break-all'>
+			<tr>
+				<td height = 'auto' >
+					<pre style='white-space:normal; line-height:1.5;'>
+						하트 모양을 출력하는 문제입니다 이를 해결하는 다음 프로그램을 해석하세요 실행순서 및 메모리 상태는 키보드의 A(이전)및 D(다음)를 눌러 확인하세요  
+					</pre>
+				</td>
+			</tr>
+		</table>
 
-<h4>입출력 예제</h4>
-<table width=807 border='1' cellpadding='10' style='table-layout:fixed; word-break:break-all'><tr><td>
+		<br><h4>입출력 예제</h4>
+			<table width='807' border='1' cellpadding='10' style='table-layout:fixed; word-break:break-all'><tr><td>
 <pre style='margin:0;padding:0;'><font color='red'>.d88b.d88b.</font>
 <font color='yellow'>88888888888</font>
 <font color='green'>`Y8888888Y'</font>
 <font color='cyan'>  `Y888Y'</font>
 <font color='blue'>    `Y'</font>
-</pre></td></tr></table><br><table width=807 border='1' cellpadding='10' style='table-layout:fixed; word-break:break-all'><tr><td>
+</pre></td></tr></table><br><table width='807' border='1' cellpadding='10' style='table-layout:fixed; word-break:break-all'><tr><td>
 <pre style='margin:0;padding:0;'><font color='red'>.d88b.d88b.</font>
 <font color='yellow'>88888888888</font>
 <font color='green'>`Y8888888Y'</font>
 <font color='cyan'>  `Y888Y'</font>
 <font color='blue'>    `Y'</font>
-</pre></td></tr></table><br><table width=807 border='1' cellpadding='10' style='table-layout:fixed; word-break:break-all'><tr><td>
+</pre></td></tr></table><br><table width='807' border='1' cellpadding='10' style='table-layout:fixed; word-break:break-all'><tr><td>
 <pre style='margin:0;padding:0;'><font color='red'>.d88b.d88b.</font>
 <font color='yellow'>88888888888</font>
 <font color='green'>`Y8888888Y'</font>
 <font color='cyan'>  `Y888Y'</font>
 <font color='blue'>    `Y'</font>
 </pre></td></tr></table><br> 
-<br><h4>알고리즘</h4>
-<table table width= '807' border='0' cellpadding='10' style= 'table-layout:fixed; word-break:break-all' >
-	<tr>
-		<td height = 'auto' >
-<pre  style='white-space: normal ; line-height: 1.5'>
-프로그램시작
+
+		<h4>알고리즘</h4>
+		<table width='807px' border='0' style='padding-left:10px; table-layout:fixed; word-break:break-all'>
+			<tr>
+				<td height = 'auto' >
+					<pre style='white-space:normal; line-height:1.5;'>
+						프로그램시작
 <br>&nbsp; &nbsp;하트 모양을 출력
 <br>프로그램 종료
-<br> </pre>
-		</td>
-	</tr>
-</table>
-
-<br><h4>프로그램 코드</h4>
-<br>
+<br> 
+					</pre>
+				</td>
+			</tr>
+		</table>
+	
+		<br><h4>프로그램 코드</h4>
 	</div>
-
-	<div id = "centerBox">
+	<div>	 
 		<div id = "codeBox">	 
-<pre id="code0" class="unselectable codeClass">	#<font color="red" title="헤더파일(.h)을 소스코드(.c)에 포함">include</font> <<font color="red" title="standard input output의 줄임말로, printf나 scanf와 같이 표준입출력과 관련된 함수 정보를 가지고 있는 헤더파일">stdio.h</font>> 					 
+			<pre id="code0" class="unselectable codeClass">	#<font color="red" title="헤더파일(.h)을 소스코드(.c)에 포함">include</font> <<font color="red" title="standard input output의 줄임말로, printf나 scanf와 같이 표준입출력과 관련된 함수 정보를 가지고 있는 헤더파일">stdio.h</font>> 					 
 </pre><pre id="code0" class="unselectable codeClass">	 
 </pre><pre id="code0" class="unselectable codeClass">	<font color="green">//<b> 프로그램시작 </b></font>
 </pre>
@@ -103,68 +375,51 @@
 <pre id="code7" class="unselectable codeClass">7		<font color="red" title="main 함수가 종료하면서 프로그램도 종료">return</font> 0; 
 </pre><pre id="code0" class="unselectable codeClass">	} 
 </pre>
- 
 		</div>	
 		<div id = "floatingBox">
-			<pre id = "outputBox" class ="outputBox"></pre>		
 			<div id = "intermediateResult">
 				<img id = "imageBox">
 				<table style = "border-spacing:0px;margin:0px;">
 				  <tbody id = "variableTable"></tbody>
 				</table>
 			</div>
+			<pre id = "outputBox" class ="outputBox"></pre>		
 		</div>
-	</div>
-	<div id = "bottomBox">
-		<div id = "keyword">
-			<span style="font-weight: bold"><h4>키워드 설명</h4></span>
-			<pre style='line-height: 1.5;'>
-·<font color="red">include </font>
- &nbsp;헤더파일(.h)을 소스코드(.c)에 포함
-
-·<font color="red">stdio.h </font>
- &nbsp;standard input output의 줄임말로, printf나 scanf와 같이 표준입출력과 관련된 함수 정보를 가지고 있는 헤더파일
-
-·<font color="red">main </font>
- &nbsp;프로그램을 시작할 때 운영체제가 호출하는 함수
-
-·<font color="red">printf </font>
- &nbsp;print formatted의 줄임말로, 전달받은 내용을 형식에 맞게 모니터에 출력하는 함수
-
-·<font color="red">\033[0;31m </font>
- &nbsp;ANSI 색상 코드로 글자색 빨강을 의미
-
-·<font color="red">\033[0m </font>
- &nbsp;ANSI 색상 코드로 모든 색과 스타일 초기화
-
-·<font color="red">\n </font>
- &nbsp;줄바꿈(new line) 문자
-
-·<font color="red">\033[0;33m </font>
- &nbsp;ANSI 색상 코드로 글자색 노랑을 의미
-
-·<font color="red">\033[0;32m </font>
- &nbsp;ANSI 색상 코드로 글자색 초록을 의미
-
-·<font color="red">\033[0;36m </font>
- &nbsp;ANSI 색상 코드로 글자색 청록을 의미
-
-·<font color="red">\033[0;34m </font>
- &nbsp;ANSI 색상 코드로 글자색 파랑을 의미
-
-·<font color="red">return </font>
- &nbsp;main 함수가 종료하면서 프로그램도 종료
-
-
-			</pre>
-		</div>
-		<div id = "sequence">
-			<span style="font-weight: bold"><h4> 실행 순서</h4></span>
-			<pre id = "sequenceBox" class="unselectable" style='white-space:normal; line-height: 1.5;'> </pre>
-		</div>
+	</div>	
+	<div id = "box">
+		<br><h4>키워드 설명</h4>
+		<table width='807px' border='0' style='padding-left:10px; table-layout:fixed; word-break:break-all'>
+			<tr>
+				<td height = 'auto' >
+					<pre style='white-space:normal; line-height:1.5;'>
+						·<font color="red">include </font>
+ &nbsp;헤더파일(.h)을 소스코드(.c)에 포함<br><br>·<font color="red">stdio.h </font>
+ &nbsp;standard input output의 줄임말로, printf나 scanf와 같이 표준입출력과 관련된 함수 정보를 가지고 있는 헤더파일<br><br>·<font color="red">main </font>
+ &nbsp;프로그램을 시작할 때 운영체제가 호출하는 함수<br><br>·<font color="red">printf </font>
+ &nbsp;print formatted의 줄임말로, 전달받은 내용을 형식에 맞게 모니터에 출력하는 함수<br><br>·<font color="red">\033[0;31m </font>
+ &nbsp;ANSI 색상 코드로 글자색 빨강을 의미<br><br>·<font color="red">\033[0m </font>
+ &nbsp;ANSI 색상 코드로 모든 색과 스타일 초기화<br><br>·<font color="red">\n </font>
+ &nbsp;줄바꿈(new line) 문자<br><br>·<font color="red">\033[0;33m </font>
+ &nbsp;ANSI 색상 코드로 글자색 노랑을 의미<br><br>·<font color="red">\033[0;32m </font>
+ &nbsp;ANSI 색상 코드로 글자색 초록을 의미<br><br>·<font color="red">\033[0;36m </font>
+ &nbsp;ANSI 색상 코드로 글자색 청록을 의미<br><br>·<font color="red">\033[0;34m </font>
+ &nbsp;ANSI 색상 코드로 글자색 파랑을 의미<br><br>·<font color="red">return </font>
+ &nbsp;main 함수가 종료하면서 프로그램도 종료<br><br>
+					</pre>
+				</td>
+			</tr>
+		</table>
+		
+		<h4>실행 순서</h4>
+		<table width='807px' border='0' style='padding-left:10px; table-layout:fixed; word-break:break-all'>
+			<tr>
+				<td height = 'auto' >
+					<pre id = "sequenceBox" class="unselectable" style='white-space:normal; line-height:1.5;'> </pre>
+				</td>
+			</tr>
+		</table>	
 	</div>
 </div>
-
 </body>
 </html>
 
