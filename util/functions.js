@@ -1,26 +1,23 @@
 function initialize()
 {
-		var strOutput = "";
-		for ( var i = 0 ; i < info.length ; i++ )
-			strOutput  += info[ i ][ OUTPUT ];
-		var countLines = strOutput.split('\n').length - 1;
+	var strOutput = "";
+	for ( var i = 0 ; i < info.length ; i++ )
+		strOutput  += info[ i ][ OUTPUT ];
+	var countLines = strOutput.split('\n').length - 1;
 
-		var outputBox = document.getElementById( "outputBox" );
-		outputBox.innerText    = strOutput;
-		outputBox.style.height = ( countLines + 3 ) * 14.5 + "px";
-		outputBox.style.width  = outputBox.offsetWidth + "px";
-		outputBox.style.color  = "White";
-		outputBox.innerText    = "";
+	var outputBox = document.getElementById( "outputBox" );
+	outputBox.innerText    = strOutput;
+	outputBox.style.height = ( countLines + 3 ) * 14.5 + "px";
+	outputBox.style.width  = outputBox.offsetWidth + "px";
+	outputBox.style.color  = "White";
+	outputBox.innerText    = "";
 
-		if( strOutput.trim() == "" )
-		{
-				outputBox.style.width = 0;
-				outputBox.style.height = 0;	
-				outputBox.style.padding = 0;
-		}
-		
-		update_view( 0, 0 );
-		timer_id = setTimeout( "onTimeEvent()", 500 );
+	if( strOutput.trim() == "" )
+	{
+		outputBox.style.width = 0;
+		outputBox.style.height = 0;	
+		outputBox.style.padding = 0;
+	}
 }
 
 function getStyle( styleCode )
@@ -174,6 +171,7 @@ function on_key_down()
 {
 	 var keycode = event.keyCode;
 	 var previousTurn = timestamp;
+
 	 /* pageUp / A */
 	 if ( ( ( keycode == 33 ) || ( keycode == 65 ) ) && ( timestamp > 0 ) )
 	 {
@@ -186,6 +184,10 @@ function on_key_down()
 		timestamp++;
 		update_view( timestamp, previousTurn );
 	 }
+	 
+	/* ���대㉧ �ㅽ�� 鍮����깊�� */
+   	const target = document.getElementById('btn');
+  	target.disabled = true;	 
 }
 	
 var timer_id;
@@ -200,3 +202,14 @@ function onTimeEvent()
 	else
 		clearTimeout( timer_id  );
 }
+
+function clickTimer()
+{
+	update_view( 0, 0 );
+	timer_id = setTimeout( "onTimeEvent()", 500 );
+  	const target = document.getElementById('btn');
+  	target.disabled = true;
+}
+
+
+
