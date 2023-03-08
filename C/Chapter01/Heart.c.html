@@ -1,0 +1,131 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./../../util/layout.css">
+<style> #container { float:left; position:absolute; top:0px; left:300px; width:1050px; border:0px solid #bcbcbc; } </style>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="./../../util/CL01/Heart.c.js"></script>
+<script src="./../../util/functions.js"></script>
+<body onload='initialize();' onkeydown='on_key_down()'><!--oncontextmenu="return false" ondragstart="return false" onselectstart="return false"-->	 
+
+<ul><li><a href='./.././Chapter01/Welcome.c.html'>환영 인사말</a></li><br>
+<li><a href='./.././Chapter01/Heart.c.html'>하트 모양</a></li><br>
+<li><a href='./.././Chapter01/Flower.c.html'>꽃 모양</a></li><br>
+<li><a href='./.././Chapter01/LittleStar.c.html'>작은별</a></li><br>
+<li><a href='./.././Chapter01/RollingDice.c.html'>주사위 굴리기</a></li><br>
+<li><a href='./.././Chapter01/Date.c.html'>생일 축하</a></li><br>
+<li><a href='./.././Chapter01/Alphabet.c.html'>알파벳 입출력</a></li><br>
+<li><a href='./.././Chapter01/Chat.c.html'>챗봇 대화</a></li><br>
+<li><a href='./.././Chapter01/FoodOrder.c.html'>음식 주문</a></li><br>
+<li><a href='./.././Chapter01/Weather.c.html'>날씨 뉴스</a></li><br>
+</ul>
+
+<div id = "container">
+	<table table width='830px' bgcolor='#808080' style='table-layout:fixed; word-break:break-all;'>
+		<tr>
+			<td align='center'>
+				<br><font color='white'><b><h3> 박코치의 C 프로그래밍 </h3></b></font><br>
+			</td>
+		</tr>
+	</table>
+	<div id = "box">
+		<h4>문제</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+하트 모양을 출력하는 문제입니다 이를 해결하는 다음 프로그램을 해석하세요  
+		</pre>
+
+		<br><h4>입출력 예제</h4>
+		<pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'><font color='red'>.d88b.d88b.
+88888888888
+`Y8888888Y'
+  `Y888Y'
+    `Y'</font>
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'><font color='red'>.d88b.d88b.
+88888888888
+`Y8888888Y'
+  `Y888Y'
+    `Y'</font>
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'><font color='red'>.d88b.d88b.
+88888888888
+`Y8888888Y'
+  `Y888Y'
+    `Y'</font>
+</pre><br> 
+
+		<h4>알고리즘</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+프로그램시작
+<br>&nbsp; &nbsp;하트 모양을 출력
+<br>프로그램 종료
+<br> 
+		</pre>
+	
+		<br><h4>프로그램 코드 <input id='btn' type='button' value='실행순서 및 메모리상태 확인' onclick='clickTimer();'/></h4> 
+	</div>
+	<div>	 
+		<div id = "codeBox">	 
+<pre id="code0" class="unselectable codeClass">	<font color="green">// 파일명 : ./Chapter01/Heart.c</font> 
+</pre><pre id="code0" class="unselectable codeClass">	#<font color='red' title="헤더파일(.h)을 소스코드(.c)에 포함하는 명령문">include</font> <<font color='red' title="표준입출력 관련 함수 정보를 가지고 있는 헤더파일">stdio.h</font>> 					 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">	<font color="green">//<b> 프로그램시작 </b></font>
+</pre>
+<pre id="code1" class="unselectable codeClass">1	int <font color='red' title="프로그램을 시작할 때 운영체제가 호출하는 함수">main</font>() 						 
+</pre><pre id="code0" class="unselectable codeClass">	{ 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 하트 모양을 출력 </b></font>
+</pre>
+<pre id="code2" class="unselectable codeClass">2		<font color='red' title="출력 함수">printf</font>( "\033[0;31m .d88b.d88b. <font color='red' title="줄바꿈(new line) 문자">\n</font>" ); 	 
+</pre>
+<pre id="code3" class="unselectable codeClass">3		<font color='red' title="출력 함수">printf</font>( " 88888888888 <font color='red' title="줄바꿈(new line) 문자">\n</font>" );  	 
+</pre>
+<pre id="code4" class="unselectable codeClass">4		<font color='red' title="출력 함수">printf</font>( " `Y8888888Y' <font color='red' title="줄바꿈(new line) 문자">\n</font>" );  	 
+</pre>
+<pre id="code5" class="unselectable codeClass">5		<font color='red' title="출력 함수">printf</font>( "  `Y888Y' <font color='red' title="줄바꿈(new line) 문자">\n</font>" ); 	 
+</pre>
+<pre id="code6" class="unselectable codeClass">6		<font color='red' title="출력 함수">printf</font>( "    `Y' <font color='red' title="줄바꿈(new line) 문자">\n</font>" );  	 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 프로그램 종료 </b></font>
+</pre>
+<pre id="code7" class="unselectable codeClass">7		<font color='red' title="함수 종료시 실행흐름이 함수를 호출했던 곳으로 되돌아가는 명령문">return</font> 0; 
+</pre><pre id="code0" class="unselectable codeClass">	} 
+</pre>
+		</div>	
+		<div id = "floatingBox">
+			<div id = "intermediateResult">
+				<img id = "imageBox">
+				<table style = "border-spacing:0px;margin:0px;">
+				  <tbody id = "variableTable"></tbody>
+				</table>
+			</div>
+			<pre id = "outputBox" class ="outputBox"></pre>		
+		</div>
+	</div>	
+
+	<div id = "box">
+		<br><h4>키워드 설명</h4>
+		<pre style='padding-left:10px; line-height:1.5; width:807px; white-space:normal;'>
+
+<font color='red'><b>include </b></font>
+ &nbsp;헤더파일(.h)을 소스코드(.c)에 포함하는 명령문<br><br>
+<font color='red'><b>stdio.h </b></font>
+ &nbsp;standard input output의 줄임말로 printf나 scanf 등 표준입출력 관련 함수 정보를 가지고 있는 헤더파일<br><br>
+<font color='red'><b>main </b></font>
+ &nbsp;프로그램을 시작할 때 운영체제가 호출하는 함수<br><br>
+<font color='red'><b>printf </b></font>
+ &nbsp;print formatted의 줄임말로 전달받은 내용을 형식에 맞게 모니터에 출력하는 함수<br><br>
+<font color='red'><b>\n </b></font>
+ &nbsp;줄바꿈(new line) 문자<br><br>
+<font color='red'><b>return </b></font>
+ &nbsp;함수 종료시 실행흐름이 함수를 호출했던 곳으로 되돌아감 <br>예를 들어, main 함수가 끝나면 main 함수를 호출한 운영체제로 제어흐름이 돌아가고 프로그램이 종료<br><br>
+<font color='red'><b>\033 </b></font>
+ &nbsp;출력 설정 이스케이프 문자 <br>printf( "\033[31m 글자색 빨강 \033[0m\n" ); // 출력결과: <font color='red'>글자색 빨강</font> <br>printf( "\033[33m 글자색 노랑 \033[0m\n" ); // 출력결과: <font color='yellow'> 글자색 노랑</font> <br>printf( "\033[32m 글자색 초록 \033[0m\n" ); // 출력결과: <font color='green'> 글자색 초록</font> <br>printf( "\033[34m 글자색 파랑 \033[0m\n" ); // 출력결과: <font color='blue'> 글자색 파랑</font> <br>printf( "\033[41m 바탕색 빨강 \033[0m\n" ); // 출력결과: <span style='background-color:red;'> 바탕색 빨강 </span> <br>printf( "\033[43m 바탕색 노랑 \033[0m\n" ); // 출력결과: <span style='background-color:yellow;'> 바탕색 노랑</span> <br>printf( "\033[42m 바탕색 초록 \033[0m\n" ); // 출력결과: <span style='background-color:green;'> 바탕색 초록</span> <br>printf( "\033[44m 바탕색 파랑 \033[0m\n" ); // 출력결과: <span style='background-color:blue;'> 바탕색 파랑</span> <br>printf( "\033[01m 글자 굵게    \033[0m\n" ); &nbsp; // 출력결과: <span style='font-weight:bold;'> 글자 굵게</span> <br> ※ \033[0m는 글자색이나 배경색 초기화<br> ※ \033[H\033[J는 모니터 화면을 깨끗이 지우고 초기화<br><br>
+		</pre>
+		
+		<h4>실행 순서</h4>
+		<pre id = "sequenceBox" style='width:807px; padding-left:10px; line-height:1.5; word-wrap:break-word;'> </pre>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+			※ 실행순서 및 메모리상태는 A키(이전)및 D키(다음)를 눌러도 확인할 수 있습니다 
+		</pre>
+	<br><br>
+	</div>
+</div>
+</body>
+</html>
+

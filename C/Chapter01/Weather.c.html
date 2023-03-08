@@ -1,0 +1,300 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./../../util/layout.css">
+<style> #container { float:left; position:absolute; top:0px; left:300px; width:1050px; border:0px solid #bcbcbc; } </style>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="./../../util/CL01/Weather.c.js"></script>
+<script src="./../../util/functions.js"></script>
+<body onload='initialize();' onkeydown='on_key_down()'><!--oncontextmenu="return false" ondragstart="return false" onselectstart="return false"-->	 
+
+<ul><li><a href='./.././Chapter01/Welcome.c.html'>환영 인사말</a></li><br>
+<li><a href='./.././Chapter01/Heart.c.html'>하트 모양</a></li><br>
+<li><a href='./.././Chapter01/Flower.c.html'>꽃 모양</a></li><br>
+<li><a href='./.././Chapter01/LittleStar.c.html'>작은별</a></li><br>
+<li><a href='./.././Chapter01/RollingDice.c.html'>주사위 굴리기</a></li><br>
+<li><a href='./.././Chapter01/Date.c.html'>생일 축하</a></li><br>
+<li><a href='./.././Chapter01/Alphabet.c.html'>알파벳 입출력</a></li><br>
+<li><a href='./.././Chapter01/Chat.c.html'>챗봇 대화</a></li><br>
+<li><a href='./.././Chapter01/FoodOrder.c.html'>음식 주문</a></li><br>
+<li><a href='./.././Chapter01/Weather.c.html'>날씨 뉴스</a></li><br>
+</ul>
+
+<div id = "container">
+	<table table width='830px' bgcolor='#808080' style='table-layout:fixed; word-break:break-all;'>
+		<tr>
+			<td align='center'>
+				<br><font color='white'><b><h3> 박코치의 C 프로그래밍 </h3></b></font><br>
+			</td>
+		</tr>
+	</table>
+	<div id = "box">
+		<h4>문제</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+사용자가 날씨 정보를 입력하면 그 결과를 바탕으로 날씨 뉴스를 생성하는 문제입니다 이를 해결하는 다음 프로그램을 해석하세요 <br>관련신문기사 - http://news.kmib.co.kr/article/view.asp?arcid=0013032800&code=61121611&cp=nv 
+		</pre>
+
+		<br><h4>입출력 예제</h4>
+		<pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>오늘은 몇 월인가요: <b><font color='red'>1</font></b>
+오늘은 몇 일인가요: <b><font color='red'>31</font></b>
+오늘은 무슨 요일인가요: <b><font color='red'>목</font></b>
+오늘의 기상특보는 무엇인가요: <b><font color='red'>대설특보</font></b>
+오늘의 주의사항은 무엇인가요: <b><font color='red'>눈길</font></b>
+서울 최저기온은 몇 도인가요: <b><font color='red'>-4</font></b>
+춘천 최저기온은 몇 도인가요: <b><font color='red'>-4</font></b>
+대전 최저기온은 몇 도인가요: <b><font color='red'>-1</font></b>
+광주 최저기온은 몇 도인가요: <b><font color='red'>0</font></b>
+부산 최저기온은 몇 도인가요: <b><font color='red'>4</font></b>
+제주 최저기온은 몇 도인가요: <b><font color='red'>4</font></b>
+서울 최고기온은 몇 도인가요: <b><font color='red'>1</font></b>
+춘천 최고기온은 몇 도인가요: <b><font color='red'>3</font></b>
+대전 최고기온은 몇 도인가요: <b><font color='red'>2</font></b>
+광주 최고기온은 몇 도인가요: <b><font color='red'>2</font></b>
+부산 최고기온은 몇 도인가요: <b><font color='red'>4</font></b>
+제주 최고기온은 몇 도인가요: <b><font color='red'>5</font></b>
+1월 31일 목요일, 아침 날씨입니다.
+아침 최저기온은 서울 -4도, 춘천 -4도, 대전 -1도, 광주 0도, 부산 4도, 제주 4도로 예상됩니다.
+낮 최고기온은 서울 1도, 춘천 3도, 대전 2도, 광주 2도, 부산 4도, 제주 5도로 예상됩니다.
+일부 지방에 대설특보가 발효중입니다. 출근길 눈길 운전에 유의해야 합니다.
+이상 날씨였습니다.
+웨더봇 기자
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>오늘은 몇 월인가요: <b><font color='red'>6</font></b>
+오늘은 몇 일인가요: <b><font color='red'>29</font></b>
+오늘은 무슨 요일인가요: <b><font color='red'>금</font></b>
+오늘의 기상특보는 무엇인가요: <b><font color='red'>호우특보</font></b>
+오늘의 주의사항은 무엇인가요: <b><font color='red'>빗길</font></b>
+서울 최저기온은 몇 도인가요: <b><font color='red'>21</font></b>
+춘천 최저기온은 몇 도인가요: <b><font color='red'>21</font></b>
+대전 최저기온은 몇 도인가요: <b><font color='red'>23</font></b>
+광주 최저기온은 몇 도인가요: <b><font color='red'>23</font></b>
+부산 최저기온은 몇 도인가요: <b><font color='red'>22</font></b>
+제주 최저기온은 몇 도인가요: <b><font color='red'>21</font></b>
+서울 최고기온은 몇 도인가요: <b><font color='red'>29</font></b>
+춘천 최고기온은 몇 도인가요: <b><font color='red'>30</font></b>
+대전 최고기온은 몇 도인가요: <b><font color='red'>31</font></b>
+광주 최고기온은 몇 도인가요: <b><font color='red'>31</font></b>
+부산 최고기온은 몇 도인가요: <b><font color='red'>26</font></b>
+제주 최고기온은 몇 도인가요: <b><font color='red'>28</font></b>
+6월 29일 금요일, 아침 날씨입니다.
+아침 최저기온은 서울 21도, 춘천 21도, 대전 23도, 광주 23도, 부산 22도, 제주 21도로 예상됩니다.
+낮 최고기온은 서울 29도, 춘천 30도, 대전 31도, 광주 31도, 부산 26도, 제주 28도로 예상됩니다.
+일부 지방에 호우특보가 발효중입니다. 출근길 빗길 운전에 유의해야 합니다.
+이상 날씨였습니다.
+웨더봇 기자
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>오늘은 몇 월인가요: <b><font color='red'>1</font></b>
+오늘은 몇 일인가요: <b><font color='red'>3</font></b>
+오늘은 무슨 요일인가요: <b><font color='red'>목</font></b>
+오늘의 기상특보는 무엇인가요: <b><font color='red'>강풍주의보</font></b>
+오늘의 주의사항은 무엇인가요: <b><font color='red'>안전</font></b>
+서울 최저기온은 몇 도인가요: <b><font color='red'>-8</font></b>
+춘천 최저기온은 몇 도인가요: <b><font color='red'>-14</font></b>
+대전 최저기온은 몇 도인가요: <b><font color='red'>-7</font></b>
+광주 최저기온은 몇 도인가요: <b><font color='red'>-4</font></b>
+부산 최저기온은 몇 도인가요: <b><font color='red'>-2</font></b>
+제주 최저기온은 몇 도인가요: <b><font color='red'>2</font></b>
+서울 최고기온은 몇 도인가요: <b><font color='red'>2</font></b>
+춘천 최고기온은 몇 도인가요: <b><font color='red'>2</font></b>
+대전 최고기온은 몇 도인가요: <b><font color='red'>4</font></b>
+광주 최고기온은 몇 도인가요: <b><font color='red'>7</font></b>
+부산 최고기온은 몇 도인가요: <b><font color='red'>8</font></b>
+제주 최고기온은 몇 도인가요: <b><font color='red'>7</font></b>
+1월 3일 목요일, 아침 날씨입니다.
+아침 최저기온은 서울 -8도, 춘천 -14도, 대전 -7도, 광주 -4도, 부산 -2도, 제주 2도로 예상됩니다.
+낮 최고기온은 서울 2도, 춘천 2도, 대전 4도, 광주 7도, 부산 8도, 제주 7도로 예상됩니다.
+일부 지방에 강풍주의보가 발효중입니다. 출근길 안전 운전에 유의해야 합니다.
+이상 날씨였습니다.
+웨더봇 기자
+</pre><br> 
+
+		<h4>알고리즘</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+프로그램 시작
+<br>&nbsp; &nbsp;주요 날씨 내용을 입력
+<br>&nbsp; &nbsp;날씨 정보를 바탕으로 기상 뉴스를 자동으로 생성
+<br>프로그램 종료
+<br> 
+		</pre>
+	
+		<br><h4>프로그램 코드 <input id='btn' type='button' value='실행순서 및 메모리상태 확인' onclick='clickTimer();'/></h4> 
+	</div>
+	<div>	 
+		<div id = "codeBox">	 
+<pre id="code0" class="unselectable codeClass">	<font color="green">// 파일명 : ./Chapter01/Weather.c</font> 
+</pre><pre id="code0" class="unselectable codeClass">	#<font color='red' title="헤더파일(.h)을 소스코드(.c)에 포함하는 명령문">include</font> <<font color='red' title="표준입출력 관련 함수 정보를 가지고 있는 헤더파일">stdio.h</font>>											 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">	<font color="green">//<b> 프로그램 시작 </b></font>
+</pre>
+<pre id="code1" class="unselectable codeClass">1	int main() 
+</pre><pre id="code0" class="unselectable codeClass">	{ 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 날씨 내용을 저장하는 변수 초기화</font> 
+</pre><pre id="code0" class="unselectable codeClass">		char month[16] = ""; 
+</pre><pre id="code0" class="unselectable codeClass">		char day[16] = ""; 
+</pre><pre id="code0" class="unselectable codeClass">		char week[16] = ""; 
+</pre><pre id="code0" class="unselectable codeClass">		char weatherReport[16] = ""; 
+</pre><pre id="code0" class="unselectable codeClass">		char precaution[16] = ""; 
+</pre><pre id="code0" class="unselectable codeClass">		int  lowSeoul = 0; 
+</pre><pre id="code0" class="unselectable codeClass">		int  lowChuncheon = 0; 
+</pre><pre id="code0" class="unselectable codeClass">		int  lowDaejeon = 0; 
+</pre><pre id="code0" class="unselectable codeClass">		int  lowGwangju = 0; 
+</pre><pre id="code0" class="unselectable codeClass">		int  lowBusan = 0; 
+</pre><pre id="code0" class="unselectable codeClass">		int  lowJeju = 0; 
+</pre><pre id="code0" class="unselectable codeClass">		int  highSeoul = 0; 
+</pre><pre id="code0" class="unselectable codeClass">		int  highChuncheon = 0; 
+</pre><pre id="code0" class="unselectable codeClass">		int  highDaejeon = 0; 
+</pre><pre id="code0" class="unselectable codeClass">		int  highGwangju = 0; 
+</pre><pre id="code0" class="unselectable codeClass">		int  highBusan = 0; 
+</pre>
+<pre id="code2" class="unselectable codeClass">2		int  highJeju = 0; 
+</pre><pre id="code0" class="unselectable codeClass">		 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 주요 날씨 내용을 입력 </b></font>
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 오늘날짜, 기상특보, 주의사항을 입력</font> 
+</pre>
+<pre id="code3" class="unselectable codeClass">3		<font color='red' title="출력 함수">printf</font>( "오늘은 몇 월인가요: " );								 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 1월을 입력한다고 가정</font> 
+</pre>
+<pre id="code4" class="unselectable codeClass">4		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="문자열  형식으로 입출력">%s</font>", month );										 
+</pre>
+<pre id="code5" class="unselectable codeClass">5		<font color='red' title="출력 함수">printf</font>( "오늘은 몇 일인가요: " );								 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 31일을 입력한다고 가정</font> 
+</pre>
+<pre id="code6" class="unselectable codeClass">6		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="문자열  형식으로 입출력">%s</font>", day );										 
+</pre>
+<pre id="code7" class="unselectable codeClass">7		<font color='red' title="출력 함수">printf</font>( "오늘은 무슨 요일인가요: " );								 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 목요일을 입력한다고 가정</font> 
+</pre>
+<pre id="code8" class="unselectable codeClass">8		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="문자열  형식으로 입출력">%s</font>", week );										 
+</pre>
+<pre id="code9" class="unselectable codeClass">9		<font color='red' title="출력 함수">printf</font>( "오늘의 기상특보는 무엇인가요: " );							 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 대설특보를 입력한다고 가정</font> 
+</pre>
+<pre id="code10" class="unselectable codeClass">10		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="문자열  형식으로 입출력">%s</font>", weatherReport );								 
+</pre>
+<pre id="code11" class="unselectable codeClass">11		<font color='red' title="출력 함수">printf</font>( "오늘의 주의사항은 무엇인가요: " );							 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 눈길을 입력한다고 가정</font> 
+</pre>
+<pre id="code12" class="unselectable codeClass">12		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="문자열  형식으로 입출력">%s</font>", precaution );									 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 지역별 최저 기온 정보를 입력</font> 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 서울, 춘천, 대전, 광주, 부산, 제주의 최저 기온을 입력</font> 
+</pre>
+<pre id="code13" class="unselectable codeClass">13		<font color='red' title="출력 함수">printf</font>( "\n서울 최저기온은 몇 도인가요: " );							 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// -4도를 입력한다고 가정</font> 
+</pre>
+<pre id="code14" class="unselectable codeClass">14		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="정수 형식으로 입출력">%d</font>", &lowSeoul );								 
+</pre>
+<pre id="code15" class="unselectable codeClass">15		<font color='red' title="출력 함수">printf</font>( "춘천 최저기온은 몇 도인가요: " );							 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// -4도를 입력한다고 가정</font> 
+</pre>
+<pre id="code16" class="unselectable codeClass">16		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="정수 형식으로 입출력">%d</font>", &lowChuncheon );							 
+</pre>
+<pre id="code17" class="unselectable codeClass">17		<font color='red' title="출력 함수">printf</font>( "대전 최저기온은 몇 도인가요: " );							 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// -1도를 입력한다고 가정</font>		 
+</pre>
+<pre id="code18" class="unselectable codeClass">18		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="정수 형식으로 입출력">%d</font>", &lowDaejeon );							 
+</pre>
+<pre id="code19" class="unselectable codeClass">19		<font color='red' title="출력 함수">printf</font>( "광주 최저기온은 몇 도인가요: " );							 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 0도를 입력한다고 가정</font> 
+</pre>
+<pre id="code20" class="unselectable codeClass">20		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="정수 형식으로 입출력">%d</font>", &lowGwangju ); 							 
+</pre>
+<pre id="code21" class="unselectable codeClass">21		<font color='red' title="출력 함수">printf</font>( "부산 최저기온은 몇 도인가요: " );							 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 4도를 입력한다고 가정</font> 
+</pre>
+<pre id="code22" class="unselectable codeClass">22		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="정수 형식으로 입출력">%d</font>", &lowBusan );							 
+</pre>
+<pre id="code23" class="unselectable codeClass">23		<font color='red' title="출력 함수">printf</font>( "제주 최저기온은 몇 도인가요: " );							 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 4도를 입력한다고 가정</font> 
+</pre>
+<pre id="code24" class="unselectable codeClass">24		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="정수 형식으로 입출력">%d</font>", &lowJeju );								 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 지역별 최고 기온 정보를 입력</font>  
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 서울, 춘천, 대전, 광주, 부산, 제주의 최고 기온을 입력</font> 
+</pre>
+<pre id="code25" class="unselectable codeClass">25		<font color='red' title="출력 함수">printf</font>( "\n서울 최고기온은 몇 도인가요: " );							 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 1도를 입력한다고 가정</font> 
+</pre>
+<pre id="code26" class="unselectable codeClass">26		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="정수 형식으로 입출력">%d</font>", &highSeoul );							 
+</pre>
+<pre id="code27" class="unselectable codeClass">27		<font color='red' title="출력 함수">printf</font>( "춘천 최고기온은 몇 도인가요: " );							 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 3도를 입력한다고 가정</font> 
+</pre>
+<pre id="code28" class="unselectable codeClass">28		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="정수 형식으로 입출력">%d</font>", &highChuncheon );							 
+</pre>
+<pre id="code29" class="unselectable codeClass">29		<font color='red' title="출력 함수">printf</font>( "대전 최고기온은 몇 도인가요: " );							 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 2도를 입력한다고 가정</font>		 
+</pre>
+<pre id="code30" class="unselectable codeClass">30		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="정수 형식으로 입출력">%d</font>", &highDaejeon );							 
+</pre>
+<pre id="code31" class="unselectable codeClass">31		<font color='red' title="출력 함수">printf</font>( "광주 최고기온은 몇 도인가요: " );							 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 2도를 입력한다고 가정</font> 
+</pre>
+<pre id="code32" class="unselectable codeClass">32		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="정수 형식으로 입출력">%d</font>", &highGwangju ); 							 
+</pre>
+<pre id="code33" class="unselectable codeClass">33		<font color='red' title="출력 함수">printf</font>( "부산 최고기온은 몇 도인가요: " );							 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 4도를 입력한다고 가정</font> 
+</pre>
+<pre id="code34" class="unselectable codeClass">34		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="정수 형식으로 입출력">%d</font>", &highBusan );							 
+</pre>
+<pre id="code35" class="unselectable codeClass">35		<font color='red' title="출력 함수">printf</font>( "제주 최고기온은 몇 도인가요: " );							 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 5도를 입력한다고 가정</font> 
+</pre>
+<pre id="code36" class="unselectable codeClass">36		<font color='red' title="입력 함수">scanf</font>( "<font color='red' title="정수 형식으로 입출력">%d</font>", &highJeju );							 
+</pre><pre id="code0" class="unselectable codeClass">		 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 날씨 정보를 바탕으로 기상 뉴스를 자동으로 생성 </b></font>
+</pre>
+<pre id="code37" class="unselectable codeClass">37		<font color='red' title="출력 함수">printf</font>( "\n<font color='red' title="문자열  형식으로 입출력">%s</font>월 <font color='red' title="문자열  형식으로 입출력">%s</font>일 <font color='red' title="문자열  형식으로 입출력">%s</font>요일, 아침 날씨입니다.", month, day, week );							 
+</pre>
+<pre id="code38" class="unselectable codeClass">38		<font color='red' title="출력 함수">printf</font>( "\n아침 최저기온은 서울 <font color='red' title="정수 형식으로 입출력">%d</font>도, 춘천 <font color='red' title="정수 형식으로 입출력">%d</font>도, 대전 <font color='red' title="정수 형식으로 입출력">%d</font>도, 광주 <font color='red' title="정수 형식으로 입출력">%d</font>도, 부산 <font color='red' title="정수 형식으로 입출력">%d</font>도, 제주 <font color='red' title="정수 형식으로 입출력">%d</font>도로 예상됩니다.",  
+</pre><pre id="code0" class="unselectable codeClass">			  lowSeoul, lowChuncheon, lowDaejeon, lowGwangju, lowBusan, lowJeju ); 
+</pre>
+<pre id="code39" class="unselectable codeClass">39		<font color='red' title="출력 함수">printf</font>( "\n낮 최고기온은 서울 <font color='red' title="정수 형식으로 입출력">%d</font>도, 춘천 <font color='red' title="정수 형식으로 입출력">%d</font>도, 대전 <font color='red' title="정수 형식으로 입출력">%d</font>도, 광주 <font color='red' title="정수 형식으로 입출력">%d</font>도, 부산 <font color='red' title="정수 형식으로 입출력">%d</font>도, 제주 <font color='red' title="정수 형식으로 입출력">%d</font>도로 예상됩니다.",  
+</pre><pre id="code0" class="unselectable codeClass">			  highSeoul, highChuncheon, highDaejeon, highGwangju, highBusan, highJeju ); 
+</pre>
+<pre id="code40" class="unselectable codeClass">40		<font color='red' title="출력 함수">printf</font>( "\n일부 지방에 <font color='red' title="문자열  형식으로 입출력">%s</font>가 발효중입니다. 출근길 <font color='red' title="문자열  형식으로 입출력">%s</font> 운전에 유의해야 합니다.", weatherReport, precaution );  
+</pre>
+<pre id="code41" class="unselectable codeClass">41		<font color='red' title="출력 함수">printf</font>( "\n이상 날씨였습니다.\n웨더봇 기자" );										 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 프로그램 종료 </b></font>
+</pre>
+<pre id="code42" class="unselectable codeClass">42		return 0; 
+</pre><pre id="code0" class="unselectable codeClass">	} 
+</pre>
+		</div>	
+		<div id = "floatingBox">
+			<div id = "intermediateResult">
+				<img id = "imageBox">
+				<table style = "border-spacing:0px;margin:0px;">
+				  <tbody id = "variableTable"></tbody>
+				</table>
+			</div>
+			<pre id = "outputBox" class ="outputBox"></pre>		
+		</div>
+	</div>	
+
+	<div id = "box">
+		<br><h4>키워드 설명</h4>
+		<pre style='padding-left:10px; line-height:1.5; width:807px; white-space:normal;'>
+
+<font color='red'><b>include </b></font>
+ &nbsp;헤더파일(.h)을 소스코드(.c)에 포함하는 명령문<br><br>
+<font color='red'><b>stdio.h </b></font>
+ &nbsp;standard input output의 줄임말로 printf나 scanf 등 표준입출력 관련 함수 정보를 가지고 있는 헤더파일<br><br>
+<font color='red'><b>printf </b></font>
+ &nbsp;print formatted의 줄임말로 전달받은 내용을 형식에 맞게 모니터에 출력하는 함수<br><br>
+<font color='red'><b>scanf </b></font>
+ &nbsp;scan formatted의 줄임말로 키보드에서 형식에 맞게 입력받은 값을 가져오는 함수<br><br>
+<font color='red'><b>%s </b></font>
+ &nbsp;문자열  형식으로 입출력<br><br>
+<font color='red'><b>%d </b></font>
+ &nbsp;정수 형식으로 입출력<br><br>
+		</pre>
+		
+		<h4>실행 순서</h4>
+		<pre id = "sequenceBox" style='width:807px; padding-left:10px; line-height:1.5; word-wrap:break-word;'> </pre>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+			※ 실행순서 및 메모리상태는 A키(이전)및 D키(다음)를 눌러도 확인할 수 있습니다 
+		</pre>
+	<br><br>
+	</div>
+</div>
+</body>
+</html>
+
