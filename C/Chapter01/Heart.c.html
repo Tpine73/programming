@@ -71,15 +71,15 @@
 </pre><pre id="code0" class="unselectable codeClass">	{ 
 </pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 하트 모양을 출력 </b></font>
 </pre>
-<pre id="code2" class="unselectable codeClass">2		<font color='red' title="출력 함수">printf</font>( "\033[0;31m .d88b.d88b. <font color='red' title="줄바꿈(new line) 문자">\n</font>" ); 	 
+<pre id="code2" class="unselectable codeClass">2		<font color='red' title="출력 함수">printf</font>( " <font color='red' title="출력 설정 이스케이프 문자">\033</font>[31m .d88b.d88b. <font color='red' title="줄바꿈(new line) 문자">\n</font>" ); 	 
 </pre>
-<pre id="code3" class="unselectable codeClass">3		<font color='red' title="출력 함수">printf</font>( " 88888888888 <font color='red' title="줄바꿈(new line) 문자">\n</font>" );  	 
+<pre id="code3" class="unselectable codeClass">3		<font color='red' title="출력 함수">printf</font>( "  88888888888 <font color='red' title="줄바꿈(new line) 문자">\n</font>" );  	 
 </pre>
-<pre id="code4" class="unselectable codeClass">4		<font color='red' title="출력 함수">printf</font>( " `Y8888888Y' <font color='red' title="줄바꿈(new line) 문자">\n</font>" );  	 
+<pre id="code4" class="unselectable codeClass">4		<font color='red' title="출력 함수">printf</font>( "  `Y8888888Y' <font color='red' title="줄바꿈(new line) 문자">\n</font>" );  	 
 </pre>
-<pre id="code5" class="unselectable codeClass">5		<font color='red' title="출력 함수">printf</font>( "  `Y888Y' <font color='red' title="줄바꿈(new line) 문자">\n</font>" ); 	 
+<pre id="code5" class="unselectable codeClass">5		<font color='red' title="출력 함수">printf</font>( "   `Y888Y' <font color='red' title="줄바꿈(new line) 문자">\n</font>" ); 	 
 </pre>
-<pre id="code6" class="unselectable codeClass">6		<font color='red' title="출력 함수">printf</font>( "    `Y' <font color='red' title="줄바꿈(new line) 문자">\n</font>" );  	 
+<pre id="code6" class="unselectable codeClass">6		<font color='red' title="출력 함수">printf</font>( "     `Y' <font color='red' title="줄바꿈(new line) 문자">\n</font>" );  	 
 </pre><pre id="code0" class="unselectable codeClass">	 
 </pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 프로그램 종료 </b></font>
 </pre>
@@ -110,12 +110,12 @@
  &nbsp;프로그램을 시작할 때 운영체제가 호출하는 함수<br><br>
 <font color='red'><b>printf </b></font>
  &nbsp;print formatted의 줄임말로 전달받은 내용을 형식에 맞게 모니터에 출력하는 함수<br><br>
+<font color='red'><b>\033 </b></font>
+ &nbsp;출력 설정 이스케이프 문자 <br>printf( "\033[31m 글자색 빨강 \033[0m\n" ); // 출력결과: <font color='red'>글자색 빨강</font> <br>printf( "\033[33m 글자색 노랑 \033[0m\n" ); // 출력결과: <font color='yellow'> 글자색 노랑</font> <br>printf( "\033[32m 글자색 초록 \033[0m\n" ); // 출력결과: <font color='green'> 글자색 초록</font> <br>printf( "\033[34m 글자색 파랑 \033[0m\n" ); // 출력결과: <font color='blue'> 글자색 파랑</font> <br>printf( "\033[41m 바탕색 빨강 \033[0m\n" ); // 출력결과: <span style='background-color:red;'> 바탕색 빨강 </span> <br>printf( "\033[43m 바탕색 노랑 \033[0m\n" ); // 출력결과: <span style='background-color:yellow;'> 바탕색 노랑</span> <br>printf( "\033[42m 바탕색 초록 \033[0m\n" ); // 출력결과: <span style='background-color:green;'> 바탕색 초록</span> <br>printf( "\033[44m 바탕색 파랑 \033[0m\n" ); // 출력결과: <span style='background-color:blue;'> 바탕색 파랑</span> <br>printf( "\033[01m 글자 굵게    \033[0m\n" ); &nbsp; // 출력결과: <span style='font-weight:bold;'> 글자 굵게</span> <br> ※ \033[0m는 글자색이나 배경색 초기화<br> ※ \033[H\033[J는 모니터 화면을 깨끗이 지우고 초기화<br><br>
 <font color='red'><b>\n </b></font>
  &nbsp;줄바꿈(new line) 문자<br><br>
 <font color='red'><b>return </b></font>
  &nbsp;함수 종료시 실행흐름이 함수를 호출했던 곳으로 되돌아감 <br>예를 들어, main 함수가 끝나면 main 함수를 호출한 운영체제로 제어흐름이 돌아가고 프로그램이 종료<br><br>
-<font color='red'><b>\033 </b></font>
- &nbsp;출력 설정 이스케이프 문자 <br>printf( "\033[31m 글자색 빨강 \033[0m\n" ); // 출력결과: <font color='red'>글자색 빨강</font> <br>printf( "\033[33m 글자색 노랑 \033[0m\n" ); // 출력결과: <font color='yellow'> 글자색 노랑</font> <br>printf( "\033[32m 글자색 초록 \033[0m\n" ); // 출력결과: <font color='green'> 글자색 초록</font> <br>printf( "\033[34m 글자색 파랑 \033[0m\n" ); // 출력결과: <font color='blue'> 글자색 파랑</font> <br>printf( "\033[41m 바탕색 빨강 \033[0m\n" ); // 출력결과: <span style='background-color:red;'> 바탕색 빨강 </span> <br>printf( "\033[43m 바탕색 노랑 \033[0m\n" ); // 출력결과: <span style='background-color:yellow;'> 바탕색 노랑</span> <br>printf( "\033[42m 바탕색 초록 \033[0m\n" ); // 출력결과: <span style='background-color:green;'> 바탕색 초록</span> <br>printf( "\033[44m 바탕색 파랑 \033[0m\n" ); // 출력결과: <span style='background-color:blue;'> 바탕색 파랑</span> <br>printf( "\033[01m 글자 굵게    \033[0m\n" ); &nbsp; // 출력결과: <span style='font-weight:bold;'> 글자 굵게</span> <br> ※ \033[0m는 글자색이나 배경색 초기화<br> ※ \033[H\033[J는 모니터 화면을 깨끗이 지우고 초기화<br><br>
 		</pre>
 		
 		<h4>실행 순서</h4>
