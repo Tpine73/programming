@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>							
+#include <time.h>							
 
 // 프로그램 시작 
 int main()
