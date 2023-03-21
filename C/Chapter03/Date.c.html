@@ -1,0 +1,154 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./../../util/layout.css">
+<style> #container { float:left; position:absolute; top:0px; left:300px; width:1050px; border:0px solid #bcbcbc; } </style>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="./../../util/CL03/Date.c.js"></script>
+<script src="./../../util/functions.js"></script>
+<body onload='initialize();' onkeydown='on_key_down()'><!--oncontextmenu="return false" ondragstart="return false" onselectstart="return false"-->	 
+
+<ul><li><a href='./.././Chapter03/BusFare.c.html'>나이별 버스요금</a></li><br>
+<li><a href='./.././Chapter03/FineDust.c.html'>미세먼지 예보</a></li><br>
+<li><a href='./.././Chapter03/Weather.c.html'>기온별 기상 특보</a></li><br>
+<li><a href='./.././Chapter03/Alphabet.c.html'>입력문자의 종류 판정</a></li><br>
+<li><a href='./.././Chapter03/Date.c.html'>윤년 판정</a></li><br>
+<li><a href='./.././Chapter03/FlipCoin.c.html'>동전 던지기</a></li><br>
+<li><a href='./.././Chapter03/Score.c.html'>점수별 메시지</a></li><br>
+<li><a href='./.././Chapter03/Color.c.html'>색상별 심리테스트</a></li><br>
+<li><a href='./.././Chapter03/Burger.c.html'>햄버거 주문</a></li><br>
+<li><a href='./.././Chapter03/RockPaperScissors.c.html'>가위바위보</a></li><br>
+</ul>
+
+<div id = "container">
+	<table table width='830px' bgcolor='#808080' style='table-layout:fixed; word-break:break-all;'>
+		<tr>
+			<td align='center'>
+				<br><font color='white'><b><h3> 박코치의 C 프로그래밍 </h3></b></font><br>
+			</td>
+		</tr>
+	</table>
+	<div id = "box">
+		<h4>문제</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+사용자가 입력한 년도가 윤년인지 평년인지 출력하는 문제입니다 이를 해결하는 다음 프로그램을 해석하세요 참고로, 4로 나누어 떨어지는 해는 윤년이지만, 
+그 중에서 100으로 나누어 떨어지는 해는 평년입니다. 
+그런데 400으로 나누어 떨어지는 해는 윤년입니다. 
+		</pre>
+
+		<br><h4>입출력 예제</h4>
+		<pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>년도를 입력하세요: <b><font color='red'>2000</font></b>
+2000년은 윤년입니다.
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>년도를 입력하세요: <b><font color='red'>2100</font></b>
+2100년은 평년입니다.
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>년도를 입력하세요: <b><font color='red'>2020</font></b>
+2020년은 윤년입니다.
+</pre><br> 
+
+		<h4>알고리즘</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+프로그램 시작
+<br>&nbsp; &nbsp;사용자가 년도를 입력
+<br>&nbsp; &nbsp;해당년도가 윤년인지 평년인지 출력
+<br>&nbsp; &nbsp;&nbsp; &nbsp;400으로 나누어 떨어지는 해는 윤년으로 출력
+<br>&nbsp; &nbsp;&nbsp; &nbsp;100으로 나누어 떨어지는 해는 평년으로 출력
+<br>&nbsp; &nbsp;&nbsp; &nbsp;4로 나누어 떨어지는 해는 윤년으로 출력
+<br>&nbsp; &nbsp;&nbsp; &nbsp;나머지는 평년으로 출력
+<br>프로그램 종료
+<br> 
+		</pre>
+	
+		<br><h4>프로그램 코드 <input id='btn' type='button' value='실행순서 및 메모리상태 확인' onclick='clickTimer();'/></h4> 
+	</div>
+	<div>	 
+		<div id = "codeBox">	 
+<pre id="code0" class="unselectable codeClass">	<font color="green">// 파일명 : ./Chapter03/Date.c</font> 
+</pre><pre id="code0" class="unselectable codeClass">	#include &lt;stdio.h&gt;  
+</pre><pre id="code0" class="unselectable codeClass"> 
+</pre><pre id="code0" class="unselectable codeClass">	<font color="green">//<b> 프로그램 시작 </b></font>
+</pre>
+<pre id="code1" class="unselectable codeClass">1	int main() 
+</pre><pre id="code0" class="unselectable codeClass">	{ 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 년도 초기화</font> 
+</pre>
+<pre id="code2" class="unselectable codeClass">2		int year = 0; 
+</pre><pre id="code0" class="unselectable codeClass"> 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 사용자가 년도를 입력 </b></font>
+</pre>
+<pre id="code3" class="unselectable codeClass">3		printf( "년도를 입력하세요: " ); 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 2000년을 입력한다고 가정</font> 
+</pre>
+<pre id="code4" class="unselectable codeClass">4		scanf( "%d", &year ); 
+</pre><pre id="code0" class="unselectable codeClass"> 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 해당년도가 윤년인지 평년인지 출력 </b></font>
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 400으로 나누어 떨어지는 해는 윤년으로 출력 </b></font>
+</pre>
+<pre id="code5" class="unselectable codeClass">5		<font color='red' title="조건식이 참이면 해당 명령문을 실행하는 선택문">if</font> ( ( year <font color='red' title="나머지 연산자">%</font> 400 ) <font color='red' title="두 값이 같은지 비교하는 등가연산자">==</font> 0 )						 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre>
+<pre id="code6" class="unselectable codeClass">6			printf( "%d년은 윤년입니다.", year ); 
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 100으로 나누어 떨어지는 해는 평년으로 출력 </b></font>
+</pre>
+<pre id="code7" class="unselectable codeClass">7		<font color='red' title="첫번째 조건식이 거짓이고 이후 조건식이 참이면 해당 명령문을 실행하는 선택문">else if</font> ( ( year <font color='red' title="나머지 연산자">%</font> 100 ) <font color='red' title="두 값이 같은지 비교하는 등가연산자">==</font> 0 )						 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre>
+<pre id="code8" class="unselectable codeClass">8			printf( "%d년은 평년입니다.", year ); 
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 4로 나누어 떨어지는 해는 윤년으로 출력 </b></font>
+</pre>
+<pre id="code9" class="unselectable codeClass">9		<font color='red' title="첫번째 조건식이 거짓이고 이후 조건식이 참이면 해당 명령문을 실행하는 선택문">else if</font> ( ( year <font color='red' title="나머지 연산자">%</font> 4 ) <font color='red' title="두 값이 같은지 비교하는 등가연산자">==</font> 0 )						 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre>
+<pre id="code10" class="unselectable codeClass">10			printf( "%d년은 윤년입니다.", year ); 
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 나머지는 평년으로 출력 </b></font>
+</pre>
+<pre id="code11" class="unselectable codeClass">11		<font color='red' title="모든 조건식이 거짓이면 해당 명령문을 실행하는 선택문">else</font> 									 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre>
+<pre id="code12" class="unselectable codeClass">12			printf( "%d년은 평년입니다.", year ); 
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass"> 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 프로그램 종료 </b></font>
+</pre>
+<pre id="code13" class="unselectable codeClass">13		return 0; 
+</pre><pre id="code0" class="unselectable codeClass">	} 
+</pre>
+		</div>	
+		<div id = "floatingBox">
+			<div id = "intermediateResult">
+				<img id = "imageBox">
+				<table style = "border-spacing:0px;margin:0px;">
+				  <tbody id = "variableTable"></tbody>
+				</table>
+			</div>
+			<pre id = "outputBox" class ="outputBox"></pre>		
+		</div>
+	</div>	
+
+	<div id = "box">
+		<br><h4>키워드 설명</h4>
+		<pre style='padding-left:10px; line-height:1.5; width:807px; white-space:normal;'>
+
+<font color='red'><b>if </b></font>
+ &nbsp;조건식이 참이면 해당 명령문을 실행하는 선택문<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>if ( 조건식 ) <br>{ <br> &nbsp; 조건식이 참이면 실행하는 명령문 <br>} </pre><br>
+<font color='red'><b>% </b></font>
+ &nbsp;나머지 연산자로 정수 a, b에 대해 a % b는 a를 b로 나누었을 때의 나머지를 연산하며, 참고로 몫은 a / b로 연산<br> 예를 들어 14 % 4 = 2 이고 14 / 4 = 3<br><br>
+<font color='red'><b>== </b></font>
+ &nbsp;등가연산자로 ( 왼쪽값 == 오른쪽값 )은 두 값이 같으면 참(1)을 반환하고 다르면 거짓(0)을 반환하며, 대입연산자 =와 비교하여 주의<br><br>
+<font color='red'><b>else if </b></font>
+ &nbsp;첫번째 조건식이 거짓이고 이후 조건식이 참이면 해당 명령문을 실행하는 선택문<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>if ( 첫번째 조건식 ) <br>{ <br> &nbsp; 첫번째 조건식이 참이면 실행하는 명령문 <br>} <br>else if ( 두번째 조건식 ) <br>{ <br> &nbsp; 두번째 조건식이 참이면 실행하는 명령문 <br>}<br>else if ( 세번째 조건식 ) <br>{ <br> &nbsp; 세번째 조건식이 참이면 실행하는 명령문 <br>} <br>... <br>else <br>{ <br> &nbsp; 앞에 제시된 모든 조건식이 거짓이면 실행하는 명령문 <br>}</pre><br>
+<font color='red'><b>else </b></font>
+ &nbsp;앞에 제시된 조건식이 거짓이면 해당 명령문을 실행하는 선택문 <pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>if ( 조건식 ) <br>{ <br> &nbsp; 조건식이 참이면 실행하는 명령문 <br>} <br>else <br>{ <br> &nbsp; 앞에 제시된 조건식이 거짓이면 실행하는 명령문 <br>}</pre><br>
+		</pre>
+		
+		<h4>실행 순서</h4>
+		<pre id = "sequenceBox" style='width:807px; padding-left:10px; line-height:1.5; word-wrap:break-word;'> </pre>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+			※ 실행순서 및 메모리상태는 A키(이전)및 D키(다음)를 눌러도 확인할 수 있습니다 
+		</pre>
+	<br><br>
+	</div>
+</div>
+</body>
+</html>
+

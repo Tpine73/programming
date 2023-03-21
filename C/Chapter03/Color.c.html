@@ -1,0 +1,180 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./../../util/layout.css">
+<style> #container { float:left; position:absolute; top:0px; left:300px; width:1050px; border:0px solid #bcbcbc; } </style>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="./../../util/CL03/Color.c.js"></script>
+<script src="./../../util/functions.js"></script>
+<body onload='initialize();' onkeydown='on_key_down()'><!--oncontextmenu="return false" ondragstart="return false" onselectstart="return false"-->	 
+
+<ul><li><a href='./.././Chapter03/BusFare.c.html'>나이별 버스요금</a></li><br>
+<li><a href='./.././Chapter03/FineDust.c.html'>미세먼지 예보</a></li><br>
+<li><a href='./.././Chapter03/Weather.c.html'>기온별 기상 특보</a></li><br>
+<li><a href='./.././Chapter03/Alphabet.c.html'>입력문자의 종류 판정</a></li><br>
+<li><a href='./.././Chapter03/Date.c.html'>윤년 판정</a></li><br>
+<li><a href='./.././Chapter03/FlipCoin.c.html'>동전 던지기</a></li><br>
+<li><a href='./.././Chapter03/Score.c.html'>점수별 메시지</a></li><br>
+<li><a href='./.././Chapter03/Color.c.html'>색상별 심리테스트</a></li><br>
+<li><a href='./.././Chapter03/Burger.c.html'>햄버거 주문</a></li><br>
+<li><a href='./.././Chapter03/RockPaperScissors.c.html'>가위바위보</a></li><br>
+</ul>
+
+<div id = "container">
+	<table table width='830px' bgcolor='#808080' style='table-layout:fixed; word-break:break-all;'>
+		<tr>
+			<td align='center'>
+				<br><font color='white'><b><h3> 박코치의 C 프로그래밍 </h3></b></font><br>
+			</td>
+		</tr>
+	</table>
+	<div id = "box">
+		<h4>문제</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+사용자가 좋아하는 색상을 선택하면 색깔 심리테스트 결과를 출력하는 문제입니다 이를 해결하는 다음 프로그램을 해석하세요 참고로, 색상별 심리테스트 결과는 아래와 같습니다. 
+<br>* 빨강색을 선택한 당신은 진취적이고 열정적이며 개방적이고 자신감이 넘치는군요
+<br>* 노랑색을 선택한 당신은 밝고 솔직하고 명랑하며 호기심도 강하고 주의력과 집중력이 높네요
+<br>* 초록색을 선택한 당신은 성실하고 참을성이 많으며 충성심이 강하고 의리가 있군요
+<br>* 파랑색을 선택한 당신은 차분하고 침착하고 이성적이며 어떤 일이든 진지하게 열심히 하는군요
+<br>* 보라색을 선택한 당신은 섬세하고 감수성이 풍부하며 관찰력이 있고 예술적 재능이 뛰어나군요 
+		</pre>
+
+		<br><h4>입출력 예제</h4>
+		<pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>빨강(1), 노랑(2), 초록(3), 파랑(4), 보라(5) 중 하나를 숫자로 입력하세요: <b><font color='red'>4</font></b>
+<font color='blue'>파랑색을 선택한 당신은 차분하고 침착하고 이성적이며 어떤 일이든 진지하게 열심히 하는군요</font>
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>빨강(1), 노랑(2), 초록(3), 파랑(4), 보라(5) 중 하나를 숫자로 입력하세요: <b><font color='red'>2</font></b>
+<font color='yellow'>노랑색을 선택한 당신은 밝고 솔직하고 명랑하며 호기심도 강하고 주의력과 집중력이 높네요</font>
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>빨강(1), 노랑(2), 초록(3), 파랑(4), 보라(5) 중 하나를 숫자로 입력하세요: <b><font color='red'>3</font></b>
+<font color='green'>초록색을 선택한 당신은 성실하고 참을성이 많으며 충성심이 강하고 의리가 있군요</font>
+</pre><br> 
+
+		<h4>알고리즘</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+프로그램 시작
+<br>&nbsp; &nbsp;사용자에게 색깔 입력받기
+<br>&nbsp; &nbsp;재미로 보는 색깔 심리테스트 결과 출력
+<br>&nbsp; &nbsp;&nbsp; &nbsp;빨강을 선택하면 '진취적이고 열정적이며 개방적이고 자신감이 넘치는군요' 출력
+<br>&nbsp; &nbsp;&nbsp; &nbsp;노랑을 선택하면 '밝고 솔직하고 명랑하며 호기심도 강하고 주의력과 집중력이 높네요' 출력
+<br>&nbsp; &nbsp;&nbsp; &nbsp;초록을 선택하면 '성실하고 참을성이 많으며 충성심이 강하고 의리가 있군요' 출력
+<br>&nbsp; &nbsp;&nbsp; &nbsp;파랑을 선택하면 '차분하고 침착하고 이성적이며 어떤 일이든 진지하게 열심히 하는군요' 출력
+<br>&nbsp; &nbsp;&nbsp; &nbsp;보라를 선택하면 '섬세하고 감수성이 풍부하며 관찰력이 있고 예술적 재능이 뛰어나군요' 출력
+<br>프로그램 종료
+<br> 
+		</pre>
+	
+		<br><h4>프로그램 코드 <input id='btn' type='button' value='실행순서 및 메모리상태 확인' onclick='clickTimer();'/></h4> 
+	</div>
+	<div>	 
+		<div id = "codeBox">	 
+<pre id="code0" class="unselectable codeClass">	<font color="green">// 파일명 : ./Chapter03/Color.c</font> 
+</pre><pre id="code0" class="unselectable codeClass">	#include &lt;stdio.h&gt; 
+</pre><pre id="code0" class="unselectable codeClass">  
+</pre><pre id="code0" class="unselectable codeClass">	<font color="green">//<b> 프로그램 시작 </b></font>
+</pre>
+<pre id="code1" class="unselectable codeClass">1	<font color='red' title="-2, -1, 0, 1, 2 등의 정수 자료형">int</font> main()  
+</pre><pre id="code0" class="unselectable codeClass">	{ 
+</pre>
+<pre id="code2" class="unselectable codeClass">2		<font color='red' title="-2, -1, 0, 1, 2 등의 정수 자료형">int</font> favoriteColor = 0; 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 사용자에게 색깔 입력받기 </b></font>
+</pre>
+<pre id="code3" class="unselectable codeClass">3		printf( "빨강(1), 노랑(2), 초록(3), 파랑(4), 보라(5) 중 하나를 숫자로 입력하세요: "); 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 4를 입력한다고 가정</font> 
+</pre>
+<pre id="code4" class="unselectable codeClass">4		scanf( "%d", &favoriteColor ); 
+</pre><pre id="code0" class="unselectable codeClass"> 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 재미로 보는 색깔 심리테스트 결과 출력 </b></font>
+</pre>
+<pre id="code5" class="unselectable codeClass">5		<font color='red' title="정수형 변수가 특정 정수값이면 해당 명령문을 실행하는 선택문">switch</font> ( favoriteColor )							 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 빨강을 선택하면 '진취적이고 열정적이며 개방적이고 자신감이 넘치는군요' 출력 </b></font>
+</pre>
+<pre id="code6" class="unselectable codeClass">6			<font color='red' title="선택문에서 정수형 변수를 특정 정수값과 비교하는 명령문">case</font> 1<font color='red' title="case문에서 정수형 변수와 특정 정수값을 비교할 때 사용되는 기호">:</font>					 
+</pre>
+<pre id="code7" class="unselectable codeClass">7				printf( "\033[31m 빨강색을 선택한 당신은 " );  
+</pre>
+<pre id="code8" class="unselectable codeClass">8				printf( "진취적이고 열정적이며 개방적이고 자신감이 넘치는군요 <font color='red' title="출력 설정 이스케이프 문자">\033</font>[0m");  
+</pre>
+<pre id="code9" class="unselectable codeClass">9				<font color='red' title="실행흐름을 중단하고 해당 영역을 빠져나오는 명령문">break</font>;								 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 노랑을 선택하면 '밝고 솔직하고 명랑하며 호기심도 강하고 주의력과 집중력이 높네요' 출력 </b></font>
+</pre>
+<pre id="code10" class="unselectable codeClass">10			<font color='red' title="선택문에서 정수형 변수를 특정 정수값과 비교하는 명령문">case</font> 2<font color='red' title="case문에서 정수형 변수와 특정 정수값을 비교할 때 사용되는 기호">:</font>					 
+</pre>
+<pre id="code11" class="unselectable codeClass">11				printf( "\033[33m 노랑색을 선택한 당신은 " );  
+</pre>
+<pre id="code12" class="unselectable codeClass">12				printf( "밝고 솔직하고 명랑하며 호기심도 강하고 주의력과 집중력이 높네요 <font color='red' title="출력 설정 이스케이프 문자">\033</font>[0m");  
+</pre>
+<pre id="code13" class="unselectable codeClass">13				<font color='red' title="실행흐름을 중단하고 해당 영역을 빠져나오는 명령문">break</font>;								 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 초록을 선택하면 '성실하고 참을성이 많으며 충성심이 강하고 의리가 있군요' 출력 </b></font>
+</pre>
+<pre id="code14" class="unselectable codeClass">14			<font color='red' title="선택문에서 정수형 변수를 특정 정수값과 비교하는 명령문">case</font> 3<font color='red' title="case문에서 정수형 변수와 특정 정수값을 비교할 때 사용되는 기호">:</font>					 
+</pre>
+<pre id="code15" class="unselectable codeClass">15				printf( "\033[32m 초록색을 선택한 당신은 " );  
+</pre>
+<pre id="code16" class="unselectable codeClass">16				printf( "성실하고 참을성이 많으며 충성심이 강하고 의리가 있군요 <font color='red' title="출력 설정 이스케이프 문자">\033</font>[0m");  
+</pre>
+<pre id="code17" class="unselectable codeClass">17				<font color='red' title="실행흐름을 중단하고 해당 영역을 빠져나오는 명령문">break</font>;								 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 파랑을 선택하면 '차분하고 침착하고 이성적이며 어떤 일이든 진지하게 열심히 하는군요' 출력 </b></font>
+</pre>
+<pre id="code18" class="unselectable codeClass">18			<font color='red' title="선택문에서 정수형 변수를 특정 정수값과 비교하는 명령문">case</font> 4<font color='red' title="case문에서 정수형 변수와 특정 정수값을 비교할 때 사용되는 기호">:</font>					 
+</pre>
+<pre id="code19" class="unselectable codeClass">19				printf( "\033[34m 파랑색을 선택한 당신은 " );  
+</pre>
+<pre id="code20" class="unselectable codeClass">20				printf( "차분하고 침착하고 이성적이며 어떤 일이든 진지하게 열심히 하는군요 <font color='red' title="출력 설정 이스케이프 문자">\033</font>[0m");  
+</pre>
+<pre id="code21" class="unselectable codeClass">21				<font color='red' title="실행흐름을 중단하고 해당 영역을 빠져나오는 명령문">break</font>;								 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 보라를 선택하면 '섬세하고 감수성이 풍부하며 관찰력이 있고 예술적 재능이 뛰어나군요' 출력 </b></font>
+</pre>
+<pre id="code22" class="unselectable codeClass">22			<font color='red' title="선택문에서 정수형 변수의 제시된 정수값이 없을 때를 표현">default</font><font color='red' title="case문에서 정수형 변수와 특정 정수값을 비교할 때 사용되는 기호">:</font>						 
+</pre>
+<pre id="code23" class="unselectable codeClass">23				printf( "\033[35m 보라색을 선택한 당신은 " );  
+</pre>
+<pre id="code24" class="unselectable codeClass">24				printf( "섬세하고 감수성이 풍부하며 관찰력이 있고 예술적 재능이 뛰어나군요 <font color='red' title="출력 설정 이스케이프 문자">\033</font>[0m");  
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 프로그램 종료 </b></font>
+</pre>
+<pre id="code25" class="unselectable codeClass">25		return 0; 
+</pre><pre id="code0" class="unselectable codeClass">	} 
+</pre>
+		</div>	
+		<div id = "floatingBox">
+			<div id = "intermediateResult">
+				<img id = "imageBox">
+				<table style = "border-spacing:0px;margin:0px;">
+				  <tbody id = "variableTable"></tbody>
+				</table>
+			</div>
+			<pre id = "outputBox" class ="outputBox"></pre>		
+		</div>
+	</div>	
+
+	<div id = "box">
+		<br><h4>키워드 설명</h4>
+		<pre style='padding-left:10px; line-height:1.5; width:807px; white-space:normal;'>
+
+<font color='red'><b>int </b></font>
+ &nbsp;-2, -1, 0, 1, 2 등의 정수 자료형<br><br>
+<font color='red'><b>switch </b></font>
+ &nbsp;정수형 변수가 특정 정수값이면 해당 명령문을 실행하는 선택문<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>switch( 정수형 변수 ) <br>{ <br>case 첫번째 정수값:<br> &nbsp; 변수가 첫번째 정수값이면 실행하는 명령문<br>case 두번째 정수값:<br> &nbsp; 변수가 두번째 정수값이면 실행하는 명령문<br>...<br>default:<br> &nbsp; 변수가 앞에서 제시된 정수값이 아니면 실행하는 명령문<br>}</pre><br>
+<font color='red'><b>case </b></font>
+ &nbsp;switch 문에서 정수형 변수를 특정 정수값과 비교하는 명령문<br><br>
+<font color='red'><b>: </b></font>
+ &nbsp;case문에서 정수형 변수와 특정 정수값을 비교할 때 사용되는 기호<br><br>
+<font color='red'><b>\033 </b></font>
+ &nbsp;출력 설정 이스케이프 문자 <br>printf( "\033[31m 글자색 빨강 \033[0m\n" ); // 출력결과: <font color='red'>글자색 빨강</font> <br>printf( "\033[33m 글자색 노랑 \033[0m\n" ); // 출력결과: <font color='yellow'> 글자색 노랑</font> <br>printf( "\033[32m 글자색 초록 \033[0m\n" ); // 출력결과: <font color='green'> 글자색 초록</font> <br>printf( "\033[34m 글자색 파랑 \033[0m\n" ); // 출력결과: <font color='blue'> 글자색 파랑</font> <br>printf( "\033[41m 바탕색 빨강 \033[0m\n" ); // 출력결과: <span style='background-color:red;'> 바탕색 빨강 </span> <br>printf( "\033[43m 바탕색 노랑 \033[0m\n" ); // 출력결과: <span style='background-color:yellow;'> 바탕색 노랑</span> <br>printf( "\033[42m 바탕색 초록 \033[0m\n" ); // 출력결과: <span style='background-color:green;'> 바탕색 초록</span> <br>printf( "\033[44m 바탕색 파랑 \033[0m\n" ); // 출력결과: <span style='background-color:blue;'> 바탕색 파랑</span> <br>printf( "\033[01m 글자 굵게    \033[0m\n" ); &nbsp; // 출력결과: <span style='font-weight:bold;'> 글자 굵게</span> <br> ※ \033[0m는 글자색이나 배경색 초기화<br> ※ \033[H\033[J는 모니터 화면을 깨끗이 지우고 초기화<br><br>
+<font color='red'><b>break </b></font>
+ &nbsp;실행흐름을 중단하고 해당 영역을 빠져나오는 명령문으로, switch 문에서 break를 실행하면 이후 명령문은 건너띄고 switch 문을 빠져나옴 <pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>switch( 정수형 변수 ) <br>{ <br>case 첫번째 정수값:<br> &nbsp; 변수가 첫번째 정수값이면 실행하는 명령문<br> &nbsp; break;<br>case 두번째 정수값:<br> &nbsp; 변수가 두번째 정수값이면 실행하는 명령문<br> &nbsp; break;<br>...<br>default:<br> &nbsp; 변수가 앞에서 제시된 정수값이 아니면 실행하는 명령문<br>}</pre><br>
+<font color='red'><b>default </b></font>
+ &nbsp;switch 문에서 정수형 변수의 제시된 정수값이 없을 때를 표현<br><br>
+		</pre>
+		
+		<h4>실행 순서</h4>
+		<pre id = "sequenceBox" style='width:807px; padding-left:10px; line-height:1.5; word-wrap:break-word;'> </pre>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+			※ 실행순서 및 메모리상태는 A키(이전)및 D키(다음)를 눌러도 확인할 수 있습니다 
+		</pre>
+	<br><br>
+	</div>
+</div>
+</body>
+</html>
+

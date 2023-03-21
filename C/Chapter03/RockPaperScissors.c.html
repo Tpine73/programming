@@ -1,0 +1,244 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./../../util/layout.css">
+<style> #container { float:left; position:absolute; top:0px; left:300px; width:1050px; border:0px solid #bcbcbc; } </style>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="./../../util/CL03/RockPaperScissors.c.js"></script>
+<script src="./../../util/functions.js"></script>
+<body onload='initialize();' onkeydown='on_key_down()'><!--oncontextmenu="return false" ondragstart="return false" onselectstart="return false"-->	 
+
+<ul><li><a href='./.././Chapter03/BusFare.c.html'>나이별 버스요금</a></li><br>
+<li><a href='./.././Chapter03/FineDust.c.html'>미세먼지 예보</a></li><br>
+<li><a href='./.././Chapter03/Weather.c.html'>기온별 기상 특보</a></li><br>
+<li><a href='./.././Chapter03/Alphabet.c.html'>입력문자의 종류 판정</a></li><br>
+<li><a href='./.././Chapter03/Date.c.html'>윤년 판정</a></li><br>
+<li><a href='./.././Chapter03/FlipCoin.c.html'>동전 던지기</a></li><br>
+<li><a href='./.././Chapter03/Score.c.html'>점수별 메시지</a></li><br>
+<li><a href='./.././Chapter03/Color.c.html'>색상별 심리테스트</a></li><br>
+<li><a href='./.././Chapter03/Burger.c.html'>햄버거 주문</a></li><br>
+<li><a href='./.././Chapter03/RockPaperScissors.c.html'>가위바위보</a></li><br>
+</ul>
+
+<div id = "container">
+	<table table width='830px' bgcolor='#808080' style='table-layout:fixed; word-break:break-all;'>
+		<tr>
+			<td align='center'>
+				<br><font color='white'><b><h3> 박코치의 C 프로그래밍 </h3></b></font><br>
+			</td>
+		</tr>
+	</table>
+	<div id = "box">
+		<h4>문제</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+A양과 B군이 가위바위보를 선택하면 승패를 출력하는 문제입니다 이를 해결하는 다음 프로그램을 해석하세요  
+		</pre>
+
+		<br><h4>입출력 예제</h4>
+		<pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>A양, 가위(1), 바위(2), 보(3) 중 하나를 숫자로 입력하세요: <b><font color='red'>2</font></b>
+바위를 냈습니다.
+B군, 가위(1), 바위(2), 보(3) 중 하나를 숫자로 입력하세요: <b><font color='red'>1</font></b>
+가위를 냈습니다.
+A양이 이겼습니다.
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>A양, 가위(1), 바위(2), 보(3) 중 하나를 숫자로 입력하세요: <b><font color='red'>3</font></b>
+보를 냈습니다.
+B군, 가위(1), 바위(2), 보(3) 중 하나를 숫자로 입력하세요: <b><font color='red'>1</font></b>
+가위를 냈습니다.
+B군이 이겼습니다.
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>A양, 가위(1), 바위(2), 보(3) 중 하나를 숫자로 입력하세요: <b><font color='red'>2</font></b>
+바위를 냈습니다.
+B군, 가위(1), 바위(2), 보(3) 중 하나를 숫자로 입력하세요: <b><font color='red'>2</font></b>
+바위를 냈습니다.
+A양과 B군이 비겼습니다.
+</pre><br> 
+
+		<h4>알고리즘</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+프로그램시작
+<br>&nbsp; &nbsp;A양이 가위바위보중 하나를 선택
+<br>&nbsp; &nbsp;B군이 가위바위보중 하나를 선택
+<br>&nbsp; &nbsp;A양과 B군의 가위바위보 승패 출력
+<br>&nbsp; &nbsp;&nbsp; &nbsp;A양과 B군이 같으면 비김
+<br>&nbsp; &nbsp;&nbsp; &nbsp;A양이 가위이고 B군이 보를 낸 경우 A양이 승리
+<br>&nbsp; &nbsp;&nbsp; &nbsp;A양이 바위이고 B군이 가위를 낸 경우 A양이 승리
+<br>&nbsp; &nbsp;&nbsp; &nbsp;A양이 보이고 B군이 바위를 낸 경우 A양이 승리
+<br>&nbsp; &nbsp;&nbsp; &nbsp;나머지는 B군이 승리
+<br>프로그램 종료
+<br> 
+		</pre>
+	
+		<br><h4>프로그램 코드 <input id='btn' type='button' value='실행순서 및 메모리상태 확인' onclick='clickTimer();'/></h4> 
+	</div>
+	<div>	 
+		<div id = "codeBox">	 
+<pre id="code0" class="unselectable codeClass">	<font color="green">// 파일명 : ./Chapter03/RockPaperScissors.c</font> 
+</pre><pre id="code0" class="unselectable codeClass">	#include &lt;stdio.h&gt;  
+</pre><pre id="code0" class="unselectable codeClass"> 
+</pre><pre id="code0" class="unselectable codeClass">	<font color="green">//<b> 프로그램시작 </b></font>
+</pre>
+<pre id="code1" class="unselectable codeClass">1	<font color='red' title="-2, -1, 0, 1, 2 등의 정수 자료형">int</font> main() 
+</pre><pre id="code0" class="unselectable codeClass">	{ 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 변수 초기화</font> 
+</pre><pre id="code0" class="unselectable codeClass">		<font color='red' title="-2, -1, 0, 1, 2 등의 정수 자료형">int</font> playerA = 0; 
+</pre>
+<pre id="code2" class="unselectable codeClass">2		<font color='red' title="-2, -1, 0, 1, 2 등의 정수 자료형">int</font> playerB = 0; 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> A양이 가위바위보중 하나를 선택 </b></font>
+</pre>
+<pre id="code3" class="unselectable codeClass">3		printf( "A양, 가위(1), 바위(2), 보(3) 중 하나를 숫자로 입력하세요: " ); 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// A양이 2를 선택한다고 가정</font> 
+</pre>
+<pre id="code4" class="unselectable codeClass">4		scanf( "%d", &playerA ); 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// A양이 선택한 결과를 출력</font>   
+</pre>
+<pre id="code5" class="unselectable codeClass">5		<font color='red' title="정수형 변수가 특정 정수값이면 해당 명령문을 실행하는 선택문">switch</font>( playerA )								 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre>
+<pre id="code6" class="unselectable codeClass">6		<font color='red' title="선택문에서 정수형 변수를 특정 정수값과 비교하는 명령문">case</font> 1:										 
+</pre>
+<pre id="code7" class="unselectable codeClass">7			printf( "가위를 냈습니다.\n" );  
+</pre>
+<pre id="code8" class="unselectable codeClass">8			<font color='red' title="실행흐름을 중단하고 해당 영역을 빠져나오는 명령문">break</font>;									 
+</pre>
+<pre id="code9" class="unselectable codeClass">9		<font color='red' title="선택문에서 정수형 변수를 특정 정수값과 비교하는 명령문">case</font> 2:										 
+</pre>
+<pre id="code10" class="unselectable codeClass">10			printf( "바위를 냈습니다.\n" );  
+</pre>
+<pre id="code11" class="unselectable codeClass">11			<font color='red' title="실행흐름을 중단하고 해당 영역을 빠져나오는 명령문">break</font>;									 
+</pre>
+<pre id="code12" class="unselectable codeClass">12		<font color='red' title="선택문에서 정수형 변수를 특정 정수값과 비교하는 명령문">case</font> 3:										 
+</pre>
+<pre id="code13" class="unselectable codeClass">13			printf( "보를 냈습니다.\n" );  
+</pre>
+<pre id="code14" class="unselectable codeClass">14			<font color='red' title="실행흐름을 중단하고 해당 영역을 빠져나오는 명령문">break</font>;									 
+</pre>
+<pre id="code15" class="unselectable codeClass">15		<font color='red' title="선택문에서 정수형 변수의 제시된 정수값이 없을 때를 표현">default</font>:									 
+</pre>
+<pre id="code16" class="unselectable codeClass">16			printf( "가위바위보를 잘못 냈습니다.\n" );  
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> B군이 가위바위보중 하나를 선택 </b></font>
+</pre>
+<pre id="code17" class="unselectable codeClass">17		printf("B군, 가위(1), 바위(2), 보(3) 중 하나를 숫자로 입력하세요: "); 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// B군이 1을 선택한다고 가정</font> 
+</pre>
+<pre id="code18" class="unselectable codeClass">18		scanf( "%d", &playerB ); 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// B군이 선택한 결과를 출력</font>  
+</pre>
+<pre id="code19" class="unselectable codeClass">19		<font color='red' title="정수형 변수가 특정 정수값이면 해당 명령문을 실행하는 선택문">switch</font>( playerB )								 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre>
+<pre id="code20" class="unselectable codeClass">20		<font color='red' title="선택문에서 정수형 변수를 특정 정수값과 비교하는 명령문">case</font> 1:										 
+</pre>
+<pre id="code21" class="unselectable codeClass">21			printf( "가위를 냈습니다.\n" ); 	 
+</pre>
+<pre id="code22" class="unselectable codeClass">22			<font color='red' title="실행흐름을 중단하고 해당 영역을 빠져나오는 명령문">break</font>;									 
+</pre>
+<pre id="code23" class="unselectable codeClass">23		<font color='red' title="선택문에서 정수형 변수를 특정 정수값과 비교하는 명령문">case</font> 2:										 
+</pre>
+<pre id="code24" class="unselectable codeClass">24			printf( "바위를 냈습니다.\n" );  
+</pre>
+<pre id="code25" class="unselectable codeClass">25			<font color='red' title="실행흐름을 중단하고 해당 영역을 빠져나오는 명령문">break</font>;									 
+</pre>
+<pre id="code26" class="unselectable codeClass">26		<font color='red' title="선택문에서 정수형 변수를 특정 정수값과 비교하는 명령문">case</font> 3:										 
+</pre>
+<pre id="code27" class="unselectable codeClass">27			printf( "보를 냈습니다.\n" );  
+</pre>
+<pre id="code28" class="unselectable codeClass">28			<font color='red' title="실행흐름을 중단하고 해당 영역을 빠져나오는 명령문">break</font>;									 
+</pre>
+<pre id="code29" class="unselectable codeClass">29		<font color='red' title="선택문에서 정수형 변수의 제시된 정수값이 없을 때를 표현">default</font>:									 
+</pre>
+<pre id="code30" class="unselectable codeClass">30			printf( "가위바위보를 잘못 냈습니다.\n" );  
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> A양과 B군의 가위바위보 승패 출력 </b></font>
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> A양과 B군이 같으면 비김  </b></font>
+</pre>
+<pre id="code31" class="unselectable codeClass">31		<font color='red' title="조건식이 참이면 해당 명령문을 실행하는 선택문">if</font> ( playerA <font color='red' title="두 값이 같은지 비교하는 등가연산자">==</font> playerB )							 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre>
+<pre id="code32" class="unselectable codeClass">32			printf( "\nA양과 B군이 비겼습니다.\n" );  
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> A양이 가위이고 B군이 보를 낸 경우 A양이 승리 </b></font>
+</pre>
+<pre id="code33" class="unselectable codeClass">33		<font color='red' title="첫번째 조건식이 거짓이고 이후 조건식이 참이면 해당 명령문을 실행하는 선택문">else if</font> ( ( playerA <font color='red' title="두 값이 같은지 비교하는 등가연산자">==</font> 1 ) <font color='red' title="두 조건식이 모두 참이면 참을 반환하는 논리연산자 AND">&&</font> ( playerB <font color='red' title="두 값이 같은지 비교하는 등가연산자">==</font> 3 ) )				 
+</pre><pre id="code0" class="unselectable codeClass">		{	 
+</pre>
+<pre id="code34" class="unselectable codeClass">34			printf( "\nA양이 이겼습니다.\n" );  
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> A양이 바위이고 B군이 가위를 낸 경우 A양이 승리 </b></font>
+</pre>
+<pre id="code35" class="unselectable codeClass">35		<font color='red' title="첫번째 조건식이 거짓이고 이후 조건식이 참이면 해당 명령문을 실행하는 선택문">else if</font> ( ( playerA <font color='red' title="두 값이 같은지 비교하는 등가연산자">==</font> 2 ) <font color='red' title="두 조건식이 모두 참이면 참을 반환하는 논리연산자 AND">&&</font> ( playerB <font color='red' title="두 값이 같은지 비교하는 등가연산자">==</font> 1 ) )				 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre>
+<pre id="code36" class="unselectable codeClass">36			printf( "\nA양이 이겼습니다.\n" );  
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> A양이 보이고 B군이 바위를 낸 경우 A양이 승리 </b></font>
+</pre>
+<pre id="code37" class="unselectable codeClass">37		<font color='red' title="첫번째 조건식이 거짓이고 이후 조건식이 참이면 해당 명령문을 실행하는 선택문">else if</font> ( ( playerA <font color='red' title="두 값이 같은지 비교하는 등가연산자">==</font> 3 ) <font color='red' title="두 조건식이 모두 참이면 참을 반환하는 논리연산자 AND">&&</font> ( playerB <font color='red' title="두 값이 같은지 비교하는 등가연산자">==</font> 2 ) )				 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre>
+<pre id="code38" class="unselectable codeClass">38			printf( "\nA양이 이겼습니다.\n" );  
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 나머지는 B군이 승리  </b></font>
+</pre>
+<pre id="code39" class="unselectable codeClass">39		<font color='red' title="모든 조건식이 거짓이면 해당 명령문을 실행하는 선택문">else</font>										 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre>
+<pre id="code40" class="unselectable codeClass">40			printf( "\nB군이 이겼습니다.\n" );  
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 프로그램 종료 </b></font>
+</pre>
+<pre id="code41" class="unselectable codeClass">41		return 0; 
+</pre><pre id="code0" class="unselectable codeClass">	} 
+</pre>
+		</div>	
+		<div id = "floatingBox">
+			<div id = "intermediateResult">
+				<img id = "imageBox">
+				<table style = "border-spacing:0px;margin:0px;">
+				  <tbody id = "variableTable"></tbody>
+				</table>
+			</div>
+			<pre id = "outputBox" class ="outputBox"></pre>		
+		</div>
+	</div>	
+
+	<div id = "box">
+		<br><h4>키워드 설명</h4>
+		<pre style='padding-left:10px; line-height:1.5; width:807px; white-space:normal;'>
+
+<font color='red'><b>int </b></font>
+ &nbsp;-2, -1, 0, 1, 2 등의 정수 자료형<br><br>
+<font color='red'><b>switch </b></font>
+ &nbsp;정수형 변수가 특정 정수값이면 해당 명령문을 실행하는 선택문<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>switch( 정수형 변수 ) <br>{ <br>case 첫번째 정수값:<br> &nbsp; 변수가 첫번째 정수값이면 실행하는 명령문<br>case 두번째 정수값:<br> &nbsp; 변수가 두번째 정수값이면 실행하는 명령문<br>...<br>default:<br> &nbsp; 변수가 앞에서 제시된 정수값이 아니면 실행하는 명령문<br>}</pre><br>
+<font color='red'><b>case </b></font>
+ &nbsp;switch 문에서 정수형 변수를 특정 정수값과 비교하는 명령문<br><br>
+<font color='red'><b>break </b></font>
+ &nbsp;실행흐름을 중단하고 해당 영역을 빠져나오는 명령문으로, switch 문에서 break를 실행하면 이후 명령문은 건너띄고 switch 문을 빠져나옴 <pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>switch( 정수형 변수 ) <br>{ <br>case 첫번째 정수값:<br> &nbsp; 변수가 첫번째 정수값이면 실행하는 명령문<br> &nbsp; break;<br>case 두번째 정수값:<br> &nbsp; 변수가 두번째 정수값이면 실행하는 명령문<br> &nbsp; break;<br>...<br>default:<br> &nbsp; 변수가 앞에서 제시된 정수값이 아니면 실행하는 명령문<br>}</pre><br>
+<font color='red'><b>default </b></font>
+ &nbsp;switch 문에서 정수형 변수의 제시된 정수값이 없을 때를 표현<br><br>
+<font color='red'><b>if </b></font>
+ &nbsp;조건식이 참이면 해당 명령문을 실행하는 선택문<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>if ( 조건식 ) <br>{ <br> &nbsp; 조건식이 참이면 실행하는 명령문 <br>} </pre><br>
+<font color='red'><b>== </b></font>
+ &nbsp;등가연산자로 ( 왼쪽값 == 오른쪽값 )은 두 값이 같으면 참(1)을 반환하고 다르면 거짓(0)을 반환하며, 대입연산자 =와 비교하여 주의<br><br>
+<font color='red'><b>else if </b></font>
+ &nbsp;첫번째 조건식이 거짓이고 이후 조건식이 참이면 해당 명령문을 실행하는 선택문<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>if ( 첫번째 조건식 ) <br>{ <br> &nbsp; 첫번째 조건식이 참이면 실행하는 명령문 <br>} <br>else if ( 두번째 조건식 ) <br>{ <br> &nbsp; 두번째 조건식이 참이면 실행하는 명령문 <br>}<br>else if ( 세번째 조건식 ) <br>{ <br> &nbsp; 세번째 조건식이 참이면 실행하는 명령문 <br>} <br>... <br>else <br>{ <br> &nbsp; 앞에 제시된 모든 조건식이 거짓이면 실행하는 명령문 <br>}</pre><br>
+<font color='red'><b>&& </b></font>
+ &nbsp;논리연산자 AND로 ( 왼쪽조건식 && 오른쪽조건식 )은 두 조건식 모두 참이면 참(1)을 반환하고, 하나라도 거짓이면 거짓(0)을 반환<br><br>
+<font color='red'><b>else </b></font>
+ &nbsp;앞에 제시된 조건식이 거짓이면 해당 명령문을 실행하는 선택문 <pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>if ( 조건식 ) <br>{ <br> &nbsp; 조건식이 참이면 실행하는 명령문 <br>} <br>else <br>{ <br> &nbsp; 앞에 제시된 조건식이 거짓이면 실행하는 명령문 <br>}</pre><br>
+		</pre>
+		
+		<h4>실행 순서</h4>
+		<pre id = "sequenceBox" style='width:807px; padding-left:10px; line-height:1.5; word-wrap:break-word;'> </pre>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+			※ 실행순서 및 메모리상태는 A키(이전)및 D키(다음)를 눌러도 확인할 수 있습니다 
+		</pre>
+	<br><br>
+	</div>
+</div>
+</body>
+</html>
+

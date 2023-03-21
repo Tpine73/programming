@@ -1,0 +1,151 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./../../util/layout.css">
+<style> #container { float:left; position:absolute; top:0px; left:300px; width:1050px; border:0px solid #bcbcbc; } </style>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="./../../util/CL03/Score.c.js"></script>
+<script src="./../../util/functions.js"></script>
+<body onload='initialize();' onkeydown='on_key_down()'><!--oncontextmenu="return false" ondragstart="return false" onselectstart="return false"-->	 
+
+<ul><li><a href='./.././Chapter03/BusFare.c.html'>나이별 버스요금</a></li><br>
+<li><a href='./.././Chapter03/FineDust.c.html'>미세먼지 예보</a></li><br>
+<li><a href='./.././Chapter03/Weather.c.html'>기온별 기상 특보</a></li><br>
+<li><a href='./.././Chapter03/Alphabet.c.html'>입력문자의 종류 판정</a></li><br>
+<li><a href='./.././Chapter03/Date.c.html'>윤년 판정</a></li><br>
+<li><a href='./.././Chapter03/FlipCoin.c.html'>동전 던지기</a></li><br>
+<li><a href='./.././Chapter03/Score.c.html'>점수별 메시지</a></li><br>
+<li><a href='./.././Chapter03/Color.c.html'>색상별 심리테스트</a></li><br>
+<li><a href='./.././Chapter03/Burger.c.html'>햄버거 주문</a></li><br>
+<li><a href='./.././Chapter03/RockPaperScissors.c.html'>가위바위보</a></li><br>
+</ul>
+
+<div id = "container">
+	<table table width='830px' bgcolor='#808080' style='table-layout:fixed; word-break:break-all;'>
+		<tr>
+			<td align='center'>
+				<br><font color='white'><b><h3> 박코치의 C 프로그래밍 </h3></b></font><br>
+			</td>
+		</tr>
+	</table>
+	<div id = "box">
+		<h4>문제</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+점수에 따라 다른 메시지를 출력하는 문제입니다 이를 해결하는 다음 프로그램을 해석하세요 참고로, 90점이상이면 와! 끝내주게 잘 했다를 출력하고, 
+80점이상이면 끝내주게 잘 했다를 출력하고, 
+70점이상이면 잘 했다를 출력하고, 
+나머지는 했다를 출력한다. 
+		</pre>
+
+		<br><h4>입출력 예제</h4>
+		<pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>0점 ~ 100점 사이의 점수를 입력하세요: <b><font color='red'>85</font></b>
+끝내주게 잘 했다
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>0점 ~ 100점 사이의 점수를 입력하세요: <b><font color='red'>93</font></b>
+와! 끝내주게 잘 했다
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>0점 ~ 100점 사이의 점수를 입력하세요: <b><font color='red'>72</font></b>
+잘 했다
+</pre><br> 
+
+		<h4>알고리즘</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+프로그램 시작
+<br>&nbsp; &nbsp;사용자에게 점수 입력받기
+<br>&nbsp; &nbsp;90점이상이면 와! 끝내주게 잘 했다를 출력
+<br>&nbsp; &nbsp;80점이상이면 끝내주게 잘 했다를 출력
+<br>&nbsp; &nbsp;70점이상이면 잘 했다를 출력
+<br>&nbsp; &nbsp;나머지는 했다를 출력
+<br>프로그램 종료
+<br> 
+		</pre>
+	
+		<br><h4>프로그램 코드 <input id='btn' type='button' value='실행순서 및 메모리상태 확인' onclick='clickTimer();'/></h4> 
+	</div>
+	<div>	 
+		<div id = "codeBox">	 
+<pre id="code0" class="unselectable codeClass">	<font color="green">// 파일명 : ./Chapter03/Score.c</font> 
+</pre><pre id="code0" class="unselectable codeClass">	#include &lt;stdio.h&gt; 
+</pre><pre id="code0" class="unselectable codeClass">  
+</pre><pre id="code0" class="unselectable codeClass">	<font color="green">//<b> 프로그램 시작 </b></font>
+</pre>
+<pre id="code1" class="unselectable codeClass">1	<font color='red' title="-2, -1, 0, 1, 2 등의 정수 자료형">int</font> main(void)  
+</pre><pre id="code0" class="unselectable codeClass">	{ 
+</pre>
+<pre id="code2" class="unselectable codeClass">2		<font color='red' title="-2, -1, 0, 1, 2 등의 정수 자료형">int</font> score = 0; 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 사용자에게 점수 입력받기 </b></font>
+</pre>
+<pre id="code3" class="unselectable codeClass">3		printf( "0점 ~ 100점 사이의 점수를 입력하세요: "); 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 85를 입력한다고 가정</font> 
+</pre>
+<pre id="code4" class="unselectable codeClass">4		scanf( "%d", &score ); 
+</pre><pre id="code0" class="unselectable codeClass"> 
+</pre>
+<pre id="code5" class="unselectable codeClass">5		<font color='red' title="정수형 변수가 특정 정수값이면 해당 명령문을 실행하는 선택문">switch</font> ( score <font color='red' title="나눗셈 연산자">/</font> 10 )				 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 90점이상이면 와! 끝내주게 잘 했다를 출력 </b></font>
+</pre>
+<pre id="code6" class="unselectable codeClass">6			<font color='red' title="선택문에서 정수형 변수를 특정 정수값과 비교하는 명령문">case</font> 10<font color='red' title="case문에서 정수형 변수와 특정 정수값을 비교할 때 사용되는 기호">:</font>								 
+</pre><pre id="code0" class="unselectable codeClass">			<font color='red' title="선택문에서 정수형 변수를 특정 정수값과 비교하는 명령문">case</font> 9<font color='red' title="case문에서 정수형 변수와 특정 정수값을 비교할 때 사용되는 기호">:</font>							 
+</pre>
+<pre id="code7" class="unselectable codeClass">7				printf( "와! "); 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 80점이상이면 끝내주게 잘 했다를 출력 </b></font>
+</pre>
+<pre id="code8" class="unselectable codeClass">8			<font color='red' title="선택문에서 정수형 변수를 특정 정수값과 비교하는 명령문">case</font> 8<font color='red' title="case문에서 정수형 변수와 특정 정수값을 비교할 때 사용되는 기호">:</font>										 
+</pre>
+<pre id="code9" class="unselectable codeClass">9				printf( "끝내주게 "); 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 70점이상이면 잘 했다를 출력 </b></font>
+</pre>
+<pre id="code10" class="unselectable codeClass">10			<font color='red' title="선택문에서 정수형 변수를 특정 정수값과 비교하는 명령문">case</font> 7<font color='red' title="case문에서 정수형 변수와 특정 정수값을 비교할 때 사용되는 기호">:</font>									 
+</pre>
+<pre id="code11" class="unselectable codeClass">11				printf( "잘 "); 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 나머지는 했다를 출력 </b></font>
+</pre>
+<pre id="code12" class="unselectable codeClass">12			<font color='red' title="선택문에서 정수형 변수의 제시된 정수값이 없을 때를 표현">default</font><font color='red' title="case문에서 정수형 변수와 특정 정수값을 비교할 때 사용되는 기호">:</font>								 
+</pre>
+<pre id="code13" class="unselectable codeClass">13				printf( "했다"); 
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 프로그램 종료 </b></font>
+</pre>
+<pre id="code14" class="unselectable codeClass">14		return 0; 
+</pre><pre id="code0" class="unselectable codeClass">	} 
+</pre>
+		</div>	
+		<div id = "floatingBox">
+			<div id = "intermediateResult">
+				<img id = "imageBox">
+				<table style = "border-spacing:0px;margin:0px;">
+				  <tbody id = "variableTable"></tbody>
+				</table>
+			</div>
+			<pre id = "outputBox" class ="outputBox"></pre>		
+		</div>
+	</div>	
+
+	<div id = "box">
+		<br><h4>키워드 설명</h4>
+		<pre style='padding-left:10px; line-height:1.5; width:807px; white-space:normal;'>
+
+<font color='red'><b>int </b></font>
+ &nbsp;-2, -1, 0, 1, 2 등의 정수 자료형<br><br>
+<font color='red'><b>switch </b></font>
+ &nbsp;정수형 변수가 특정 정수값이면 해당 명령문을 실행하는 선택문<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>switch( 정수형 변수 ) <br>{ <br>case 첫번째 정수값:<br> &nbsp; 변수가 첫번째 정수값이면 실행하는 명령문<br>case 두번째 정수값:<br> &nbsp; 변수가 두번째 정수값이면 실행하는 명령문<br>...<br>default:<br> &nbsp; 변수가 앞에서 제시된 정수값이 아니면 실행하는 명령문<br>}</pre><br>
+<font color='red'><b>/ </b></font>
+ &nbsp;나눗셈 연산자<br><br>
+<font color='red'><b>case </b></font>
+ &nbsp;switch 문에서 정수형 변수를 특정 정수값과 비교하는 명령문<br><br>
+<font color='red'><b>: </b></font>
+ &nbsp;case문에서 정수형 변수와 특정 정수값을 비교할 때 사용되는 기호<br><br>
+<font color='red'><b>default </b></font>
+ &nbsp;switch 문에서 정수형 변수의 제시된 정수값이 없을 때를 표현<br><br>
+		</pre>
+		
+		<h4>실행 순서</h4>
+		<pre id = "sequenceBox" style='width:807px; padding-left:10px; line-height:1.5; word-wrap:break-word;'> </pre>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+			※ 실행순서 및 메모리상태는 A키(이전)및 D키(다음)를 눌러도 확인할 수 있습니다 
+		</pre>
+	<br><br>
+	</div>
+</div>
+</body>
+</html>
+
