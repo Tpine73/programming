@@ -1,0 +1,1 @@
+var info =  [ [ "1",	"",	"table	main함수:ww	            0               :lbw$year  :lb	" ],  [ "2",	"",	"" ],  [ "3",	"년도를 입력하세요: ",	"" ],  [ "4",	"2000\n",	"table	main함수:ww	            <b>2000</b> <del>0</del>          :lbw$year  :lb	" ],  [ "5",	"",	"table	main함수:ww	            2000            :lbw$year  :lb	" ],  [ "6",	"2000년은 윤년입니다.",	"" ],  [ "13",	"",	"" ],  ]; 
