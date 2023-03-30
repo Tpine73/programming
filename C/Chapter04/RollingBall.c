@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <windows.h>  
+#include <unistd.h>  
 
 // 프로그램 시작 
 int main() 
@@ -13,9 +13,9 @@ int main()
 	// 첫번째 프레임부터 마지막 프레임까지 
 	for( frame = 1; frame <= frameLength; frame ++ )
 	{	
-		// 0.2초마다 화면 초기화  
-		Sleep( 200 );				
-		system( "cls" );			
+		// 1초마다 화면 초기화  
+		sleep( 1 );				
+		printf(" \033[H\033[J");
 
 		// 프레임마다 이동거리 1칸씩 증가후  
 		for( blank = 1; blank <= frame; blank ++ )

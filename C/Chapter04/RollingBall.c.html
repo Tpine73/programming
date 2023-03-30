@@ -46,7 +46,7 @@
 프로그램 시작
 <br>&nbsp; &nbsp;애니메이션 총 프레임 길이 입력 받기
 <br>&nbsp; &nbsp;첫번째 프레임부터 마지막 프레임까지
-<br>&nbsp; &nbsp;&nbsp; &nbsp;0.2초마다 화면 초기화
+<br>&nbsp; &nbsp;&nbsp; &nbsp;1초마다 화면 초기화
 <br>&nbsp; &nbsp;&nbsp; &nbsp;프레임마다 이동거리 1칸씩 증가후
 <br>&nbsp; &nbsp;&nbsp; &nbsp;굴러가는 공 출력
 <br>프로그램 종료
@@ -59,7 +59,7 @@
 		<div id = "codeBox">	 
 <pre id="code0" class="unselectable codeClass">	<font color="green">// 파일명 : ./Chapter04/RollingBall.c</font> 
 </pre><pre id="code0" class="unselectable codeClass">	#include &lt;stdio.h&gt; 
-</pre><pre id="code0" class="unselectable codeClass">	#include &lt;<font color='red' title="system, Sleep 등 윈도우 운영체제 관련 함수 정보를 가지고 있는 헤더 파일">windows.h</font>>   
+</pre><pre id="code0" class="unselectable codeClass">	#include &lt;<font color='red' title="sleep 함수를 포함하는 헤더 파일">unistd.h</font>>   
 </pre><pre id="code0" class="unselectable codeClass">	 
 </pre><pre id="code0" class="unselectable codeClass">	<font color="green">//<b> 프로그램 시작 </b></font>
 </pre>
@@ -83,11 +83,11 @@
 </pre>
 <pre id="code7" class="unselectable codeClass">7		        			frame ++ ) 
 </pre><pre id="code0" class="unselectable codeClass">		{	 
-</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 0.2초마다 화면 초기화  </b></font>
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 1초마다 화면 초기화  </b></font>
 </pre>
-<pre id="code8" class="unselectable codeClass">8			<font color='red' title="일정 시간동안 프로그램을 지연시키는 함수">Sleep</font>( 200 );				 
+<pre id="code8" class="unselectable codeClass">8			<font color='red' title="지정한 시간만큼 대기하는 함수">sleep</font>( 1 );				 
 </pre>
-<pre id="code9" class="unselectable codeClass">9			<font color='red' title="명령어를 운영체제에 전달하여 실행시키는 함수">system</font>( "<font color='red' title="콘솔 화면을 깨끗하게 초기화하는 운영체제 명령어">cls</font>" );			 
+<pre id="code9" class="unselectable codeClass">9			printf(" \033[H\033[J"); 
 </pre><pre id="code0" class="unselectable codeClass">	 
 </pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 프레임마다 이동거리 1칸씩 증가후  </b></font>
 </pre>
@@ -127,12 +127,12 @@
 		<br><h4>키워드 설명</h4>
 		<pre style='padding-left:10px; line-height:1.5; width:807px; white-space:normal;'>
 
-<font color='red'><b>windows.h </b></font>
- &nbsp;system, Sleep 등 윈도우 운영체제 관련 함수 정보를 가지고 있는 헤더 파일<br><br>
+<font color='red'><b>unistd.h </b></font>
+ &nbsp;sleep 함수를 포함하는 헤더 파일<br><br>
 <font color='red'><b>for </b></font>
  &nbsp;초기식, 조건식, 증감식으로 구성된 반복문으로 초기식 → 조건식(참) → 명령문 → 증감식 → 조건식(참) → 명령문 → ...  → 증감식 → 조건식(거짓) → for문 종료의 순서대로 실행<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>for( 초기식; 조건식; 증감식 )<br>{ <br> &nbsp; 조건식이 참이면 실행하는 명령문<br>}</pre><br>
-<font color='red'><b>Sleep </b></font>
- &nbsp;일정 시간동안 프로그램을 지연시키는 함수<br><br>
+<font color='red'><b>sleep </b></font>
+ &nbsp;지정한 시간만큼 대기하는 함수<br>리눅스/유닉스 버전 sleep(초)<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>#include &lt;stdio.h&gt; 					<br>#include &lt;unistd.h&gt;<br>int main()<br>{<br>	printf( "3초 대기 시작\n");<br>	sleep(3);<br>	printf( "3초 대기 종료\n");<br>	return 0;<br>}</pre>윈도우 버전 Sleep(밀리초)<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>#include &lt;stdio.h&gt; 					<br>#include &lt;Windows.h&gt;<br>int main()<br>{<br>	printf( "3초 대기 시작\n");<br>	Sleep(3000);<br>	printf( "3초 대기 종료\n");<br>	return 0;<br>}</pre><br>
 <font color='red'><b>system </b></font>
  &nbsp;명령어를 운영체제에 전달하여 실행시키는 함수<br><br>
 <font color='red'><b>cls </b></font>
