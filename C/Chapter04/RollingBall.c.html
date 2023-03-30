@@ -1,0 +1,152 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./../../util/layout.css">
+<style> #container { float:left; position:absolute; top:0px; left:300px; width:1050px; border:0px solid #bcbcbc; } </style>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="./../../util/CL04/RollingBall.c.js"></script>
+<script src="./../../util/functions.js"></script>
+<body onload='initialize();' onkeydown='on_key_down()'><!--oncontextmenu="return false" ondragstart="return false" onselectstart="return false"-->	 
+
+<ul><li><a href='./.././Chapter04/Elevator.c.html'>엘리베이터</a></li><br>
+<li><a href='./.././Chapter04/Summation.c.html'>합계 Σ 계산</a></li><br>
+<li><a href='./.././Chapter04/Factorial.c.html'>factorial 계산</a></li><br>
+<li><a href='./.././Chapter04/Triangle.c.html'>삼각형 출력</a></li><br>
+<li><a href='./.././Chapter04/Score.c.html'>점수 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/Alphabet.c.html'>알파벳 소문자 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/Weather.c.html'>온도 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/RockPaperScissors.c.html'>가위바위보 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/RollingBall.c.html'>공 굴리기</a></li><br>
+<li><a href='./.././Chapter04/Date.c.html'>달력 출력</a></li><br>
+</ul>
+
+<div id = "container">
+	<table table width='830px' bgcolor='#808080' style='table-layout:fixed; word-break:break-all;'>
+		<tr>
+			<td align='center'>
+				<br><font color='white'><b><h3> 박코치의 C 프로그래밍 </h3></b></font><br>
+			</td>
+		</tr>
+	</table>
+	<div id = "box">
+		<h4>문제</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+총 프레임 길이 입력 받아서 공이 굴러가는 애니메이션을 출력하는 문제입니다 이를 해결하는 다음 프로그램을 해석하세요  
+		</pre>
+
+		<br><h4>입출력 예제</h4>
+		<pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>애니메이션 총 프레임 길이를 입력하세요: <b><font color='red'>5</font></b>
+</pre><marquee width=50 direction="right">O</marquee><pre>
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>애니메이션 총 프레임 길이를 입력하세요: <b><font color='red'>10</font></b>
+</pre><marquee width=100 direction="right">O</marquee><pre>
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>애니메이션 총 프레임 길이를 입력하세요: <b><font color='red'>20</font></b>
+</pre><marquee width=200 direction="right">O</marquee><pre>
+</pre><br> 
+
+		<h4>알고리즘</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+프로그램 시작
+<br>&nbsp; &nbsp;애니메이션 총 프레임 길이 입력 받기
+<br>&nbsp; &nbsp;첫번째 프레임부터 마지막 프레임까지
+<br>&nbsp; &nbsp;&nbsp; &nbsp;0.2초마다 화면 초기화
+<br>&nbsp; &nbsp;&nbsp; &nbsp;프레임마다 이동거리 1칸씩 증가후
+<br>&nbsp; &nbsp;&nbsp; &nbsp;굴러가는 공 출력
+<br>프로그램 종료
+<br> 
+		</pre>
+	
+		<br><h4>프로그램 코드 <input id='btn' type='button' value='실행순서 및 메모리상태 확인' onclick='clickTimer();'/></h4> 
+	</div>
+	<div>	 
+		<div id = "codeBox">	 
+<pre id="code0" class="unselectable codeClass">	<font color="green">// 파일명 : ./Chapter04/RollingBall.c</font> 
+</pre><pre id="code0" class="unselectable codeClass">	#include &lt;stdio.h&gt; 
+</pre><pre id="code0" class="unselectable codeClass">	#include &lt;<font color='red' title="system, Sleep 등 윈도우 운영체제 관련 함수 정보를 가지고 있는 헤더 파일">windows.h</font>>   
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">	<font color="green">//<b> 프로그램 시작 </b></font>
+</pre>
+<pre id="code1" class="unselectable codeClass">1	int main()  
+</pre><pre id="code0" class="unselectable codeClass">	{ 
+</pre>
+<pre id="code2" class="unselectable codeClass">2		int frameLength = 0, frame = 0, blank = 0; 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 애니메이션 총 프레임 길이 입력 받기 </b></font>
+</pre>
+<pre id="code3" class="unselectable codeClass">3		printf( "애니메이션 총 프레임 길이를 입력하세요: "); 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 3을 입력한다고 가정</font> 
+</pre>
+<pre id="code4" class="unselectable codeClass">4		scanf( "%d", &frameLength ); 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 첫번째 프레임부터 마지막 프레임까지 </b></font>
+</pre>
+<pre id="code5" class="unselectable codeClass">5		<font color='red' title="초기식, 조건식, 증감식으로 구성된 반복문">for</font>( frame = 1; 				 
+</pre>
+<pre id="code6" class="unselectable codeClass">6		        frame <= frameLength; 
+</pre>
+<pre id="code7" class="unselectable codeClass">7		        			frame ++ ) 
+</pre><pre id="code0" class="unselectable codeClass">		{	 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 0.2초마다 화면 초기화  </b></font>
+</pre>
+<pre id="code8" class="unselectable codeClass">8			<font color='red' title="일정 시간동안 프로그램을 지연시키는 함수">Sleep</font>( 200 );				 
+</pre>
+<pre id="code9" class="unselectable codeClass">9			<font color='red' title="명령어를 운영체제에 전달하여 실행시키는 함수">system</font>( "<font color='red' title="콘솔 화면을 깨끗하게 초기화하는 운영체제 명령어">cls</font>" );			 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 프레임마다 이동거리 1칸씩 증가후  </b></font>
+</pre>
+<pre id="code10" class="unselectable codeClass">10			<font color='red' title="초기식, 조건식, 증감식으로 구성된 반복문">for</font>( blank = 1; 					 
+</pre>
+<pre id="code11" class="unselectable codeClass">11			        blank <= frame; 
+</pre>
+<pre id="code12" class="unselectable codeClass">12			        			blank ++ )  
+</pre><pre id="code0" class="unselectable codeClass">			{ 
+</pre>
+<pre id="code13" class="unselectable codeClass">13				printf ( " " ); 
+</pre><pre id="code0" class="unselectable codeClass">			} 
+</pre><pre id="code0" class="unselectable codeClass">				 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 굴러가는 공 출력  </b></font>
+</pre>
+<pre id="code14" class="unselectable codeClass">14			printf ( "O" ); 
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b>프로그램 종료  </b></font>
+</pre>
+<pre id="code15" class="unselectable codeClass">15		return 0; 
+</pre><pre id="code0" class="unselectable codeClass">	} 
+</pre>
+		</div>	
+		<div id = "floatingBox">
+			<div id = "intermediateResult">
+				<img id = "imageBox">
+				<table style = "border-spacing:0px;margin:0px;">
+				  <tbody id = "variableTable"></tbody>
+				</table>
+			</div>
+			<pre id = "outputBox" class ="outputBox"></pre>		
+		</div>
+	</div>	
+
+	<div id = "box">
+		<br><h4>키워드 설명</h4>
+		<pre style='padding-left:10px; line-height:1.5; width:807px; white-space:normal;'>
+
+<font color='red'><b>windows.h </b></font>
+ &nbsp;system, Sleep 등 윈도우 운영체제 관련 함수 정보를 가지고 있는 헤더 파일<br><br>
+<font color='red'><b>for </b></font>
+ &nbsp;초기식, 조건식, 증감식으로 구성된 반복문으로 초기식 → 조건식(참) → 명령문 → 증감식 → 조건식(참) → 명령문 → ...  → 증감식 → 조건식(거짓) → for문 종료의 순서대로 실행<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>for( 초기식; 조건식; 증감식 )<br>{ <br> &nbsp; 조건식이 참이면 실행하는 명령문<br>}</pre><br>
+<font color='red'><b>Sleep </b></font>
+ &nbsp;일정 시간동안 프로그램을 지연시키는 함수<br><br>
+<font color='red'><b>system </b></font>
+ &nbsp;명령어를 운영체제에 전달하여 실행시키는 함수<br><br>
+<font color='red'><b>cls </b></font>
+ &nbsp;clear the screen의 약어로 콘솔 화면을 깨끗하게 초기화하는 운영체제 명령어<br><br>
+		</pre>
+		
+		<h4>실행 순서</h4>
+		<pre id = "sequenceBox" style='width:807px; padding-left:10px; line-height:1.5; word-wrap:break-word;'> </pre>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+			※ 실행순서 및 메모리상태는 A키(이전)및 D키(다음)를 눌러도 확인할 수 있습니다 
+		</pre>
+	<br><br>
+	</div>
+</div>
+</body>
+</html>
+

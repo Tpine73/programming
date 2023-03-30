@@ -1,0 +1,149 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./../../util/layout.css">
+<style> #container { float:left; position:absolute; top:0px; left:300px; width:1050px; border:0px solid #bcbcbc; } </style>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="./../../util/CL04/Elevator.c.js"></script>
+<script src="./../../util/functions.js"></script>
+<body onload='initialize();' onkeydown='on_key_down()'><!--oncontextmenu="return false" ondragstart="return false" onselectstart="return false"-->	 
+
+<ul><li><a href='./.././Chapter04/Elevator.c.html'>엘리베이터</a></li><br>
+<li><a href='./.././Chapter04/Summation.c.html'>합계 Σ 계산</a></li><br>
+<li><a href='./.././Chapter04/Factorial.c.html'>factorial 계산</a></li><br>
+<li><a href='./.././Chapter04/Triangle.c.html'>삼각형 출력</a></li><br>
+<li><a href='./.././Chapter04/Score.c.html'>점수 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/Alphabet.c.html'>알파벳 소문자 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/Weather.c.html'>온도 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/RockPaperScissors.c.html'>가위바위보 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/RollingBall.c.html'>공 굴리기</a></li><br>
+<li><a href='./.././Chapter04/Date.c.html'>달력 출력</a></li><br>
+</ul>
+
+<div id = "container">
+	<table table width='830px' bgcolor='#808080' style='table-layout:fixed; word-break:break-all;'>
+		<tr>
+			<td align='center'>
+				<br><font color='white'><b><h3> 박코치의 C 프로그래밍 </h3></b></font><br>
+			</td>
+		</tr>
+	</table>
+	<div id = "box">
+		<h4>문제</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+엘리베이터에 탑승 후 엘리베이터에서 내릴 층수를 입력받아 메시지를 출력하는 문제입니다 이를 해결하는 다음 프로그램을 해석하세요  
+		</pre>
+
+		<br><h4>입출력 예제</h4>
+		<pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>1층~5층 중 몇 층으로 올라가시나요 : <b><font color='red'>2</font></b>
+2층으로 올라갑니다. 문이 닫힙니다.
+1↑
+2↑
+딩~동~댕~동~~ ♪~♬~♩~~ 2층입니다. 문이 열립니다
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>1층~5층 중 몇 층으로 올라가시나요 : <b><font color='red'>3</font></b>
+3층으로 올라갑니다. 문이 닫힙니다.
+1↑
+2↑
+3↑
+딩~동~댕~동~~ ♪~♬~♩~~ 3층입니다. 문이 열립니다
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>1층~5층 중 몇 층으로 올라가시나요 : <b><font color='red'>5</font></b>
+5층으로 올라갑니다. 문이 닫힙니다.
+1↑
+2↑
+3↑
+4↑
+5↑
+딩~동~댕~동~~ ♪~♬~♩~~ 5층입니다. 문이 열립니다
+</pre><br> 
+
+		<h4>알고리즘</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+프로그램 시작
+<br>&nbsp; &nbsp;사용자에게 엘리베이터에서 내릴 층수 입력받기
+<br>&nbsp; &nbsp;엘리베이터 문이 닫히면서 안내 메시지 출력
+<br>&nbsp; &nbsp;사용자가 1층부터 내릴 층수까지 엘리베이터가 한 층씩 이동하기
+<br>&nbsp; &nbsp;&nbsp; &nbsp;현재 층수 출력하고 한층 이동하기
+<br>&nbsp; &nbsp;엘리베이터 문이 열리면서 도착 메시지 출력
+<br>프로그램 종료
+<br> 
+		</pre>
+	
+		<br><h4>프로그램 코드 <input id='btn' type='button' value='실행순서 및 메모리상태 확인' onclick='clickTimer();'/></h4> 
+	</div>
+	<div>	 
+		<div id = "codeBox">	 
+<pre id="code0" class="unselectable codeClass">	<font color="green">// 파일명 : ./Chapter04/Elevator.c</font> 
+</pre><pre id="code0" class="unselectable codeClass">	#include &lt;stdio.h&gt; 
+</pre><pre id="code0" class="unselectable codeClass"> 
+</pre><pre id="code0" class="unselectable codeClass">	<font color="green">//<b> 프로그램 시작 </b></font>
+</pre>
+<pre id="code1" class="unselectable codeClass">1	int main() 
+</pre><pre id="code0" class="unselectable codeClass">	{ 
+</pre><pre id="code0" class="unselectable codeClass">		int currentFloor = 1;								 
+</pre>
+<pre id="code2" class="unselectable codeClass">2		int destinationFloor = 0; 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 사용자에게 엘리베이터에서 내릴 층수 입력받기 </b></font>
+</pre>
+<pre id="code3" class="unselectable codeClass">3		printf( "1층~5층 중 몇 층으로 가시나요 : " ); 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 2층을 입력한다고 가정</font> 
+</pre>
+<pre id="code4" class="unselectable codeClass">4		scanf( "%d", &destinationFloor );  
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 엘리베이터 문이 닫히면서 안내 메시지 출력 </b></font>
+</pre>
+<pre id="code5" class="unselectable codeClass">5		printf( "%d층으로 올라갑니다. 문이 닫힙니다.\n", destinationFloor ); 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 사용자가 1층부터 내릴 층수까지 엘리베이터가 한 층씩 이동하기 </b></font>
+</pre>
+<pre id="code6" class="unselectable codeClass">6		<font color='red' title="조건식이 참이면 해당 명령문을 실행하는 반복문">while</font>( currentFloor <font color='red' title="왼쪽값이 오른쪽값보다 작거나 같은지 비교하는 비교연산자"><=</font> destinationFloor )					 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 현재 층수 출력하고 한층 이동하기 </b></font>
+</pre>
+<pre id="code7" class="unselectable codeClass">7			printf( "%d↑\n", currentFloor ); 
+</pre>
+<pre id="code8" class="unselectable codeClass">8			currentFloor <font color='red' title="a = a + 1을 실행하는 증가연산자">++</font> ;							 
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 엘리베이터 문이 열리면서 도착 메시지 출력 </b></font>
+</pre>
+<pre id="code9" class="unselectable codeClass">9		printf( "딩~동~댕~동~~ ♪~♬~♩~~ %d층입니다. 문이 열립니다", destinationFloor ) 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 프로그램 종료 </b></font>
+</pre>
+<pre id="code10" class="unselectable codeClass">10		return 0; 
+</pre><pre id="code0" class="unselectable codeClass">	} 
+</pre>
+		</div>	
+		<div id = "floatingBox">
+			<div id = "intermediateResult">
+				<img id = "imageBox">
+				<table style = "border-spacing:0px;margin:0px;">
+				  <tbody id = "variableTable"></tbody>
+				</table>
+			</div>
+			<pre id = "outputBox" class ="outputBox"></pre>		
+		</div>
+	</div>	
+
+	<div id = "box">
+		<br><h4>키워드 설명</h4>
+		<pre style='padding-left:10px; line-height:1.5; width:807px; white-space:normal;'>
+
+<font color='red'><b>while </b></font>
+ &nbsp;조건식이 참이면 해당 명령문을 실행하는 반복문으로 조건식(참) → 명령문 → 조건식(참) → 명령문 → ... → 조건식(거짓) → while문 종료의 순서대로 실행<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>while( 조건식 )<br>{ <br> &nbsp; 조건식이 참이면 실행하는 명령문<br>}</pre><br>
+<font color='red'><b><= </b></font>
+ &nbsp;비교연산자로 ( 왼쪽값 <= 오른쪽값 )은 왼쪽값이 오른쪽값보다 작거나 같으면 참(1)을 반환하고 아니면 거짓(0)을 반환<br><br>
+<font color='red'><b>++ </b></font>
+ &nbsp;증가연산자로 a++은 a = a + 1를 의미하며 변수공간a <span style ='border:1px solid #000000; padding:3px;'>&nbsp;a값 </span>을 변수공간a <span style ='border:1px solid #000000; padding:3px;'>&nbsp;a값 + 1 </span>로 변경<br><br>
+		</pre>
+		
+		<h4>실행 순서</h4>
+		<pre id = "sequenceBox" style='width:807px; padding-left:10px; line-height:1.5; word-wrap:break-word;'> </pre>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+			※ 실행순서 및 메모리상태는 A키(이전)및 D키(다음)를 눌러도 확인할 수 있습니다 
+		</pre>
+	<br><br>
+	</div>
+</div>
+</body>
+</html>
+

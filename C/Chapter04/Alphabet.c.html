@@ -1,0 +1,132 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./../../util/layout.css">
+<style> #container { float:left; position:absolute; top:0px; left:300px; width:1050px; border:0px solid #bcbcbc; } </style>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="./../../util/CL04/Alphabet.c.js"></script>
+<script src="./../../util/functions.js"></script>
+<body onload='initialize();' onkeydown='on_key_down()'><!--oncontextmenu="return false" ondragstart="return false" onselectstart="return false"-->	 
+
+<ul><li><a href='./.././Chapter04/Elevator.c.html'>엘리베이터</a></li><br>
+<li><a href='./.././Chapter04/Summation.c.html'>합계 Σ 계산</a></li><br>
+<li><a href='./.././Chapter04/Factorial.c.html'>factorial 계산</a></li><br>
+<li><a href='./.././Chapter04/Triangle.c.html'>삼각형 출력</a></li><br>
+<li><a href='./.././Chapter04/Score.c.html'>점수 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/Alphabet.c.html'>알파벳 소문자 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/Weather.c.html'>온도 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/RockPaperScissors.c.html'>가위바위보 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/RollingBall.c.html'>공 굴리기</a></li><br>
+<li><a href='./.././Chapter04/Date.c.html'>달력 출력</a></li><br>
+</ul>
+
+<div id = "container">
+	<table table width='830px' bgcolor='#808080' style='table-layout:fixed; word-break:break-all;'>
+		<tr>
+			<td align='center'>
+				<br><font color='white'><b><h3> 박코치의 C 프로그래밍 </h3></b></font><br>
+			</td>
+		</tr>
+	</table>
+	<div id = "box">
+		<h4>문제</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+알파벳 소문자에 해당하는 ASCII 코드 숫자를 입력받아 그 값을 출력하는 문제입니다 이를 해결하는 다음 프로그램을 해석하세요 참고로, 입력값이 알파벳 소문자가 아니면 다시 입력을 받습니다. 
+		</pre>
+
+		<br><h4>입출력 예제</h4>
+		<pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>ASCII 코드에서 알파벳 소문자에 해당하는 97 ~ 122 사이의 숫자를 입력하세요:  <b><font color='red'>69</font></b>
+숫자 69는 문자 E에 해당합니다^^
+ASCII 코드에서 알파벳 소문자에 해당하는 97 ~ 122 사이의 숫자를 입력하세요:  <b><font color='red'>99</font></b>
+숫자 99는 문자 c에 해당합니다^^
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>ASCII 코드에서 알파벳 소문자에 해당하는 97 ~ 122 사이의 숫자를 입력하세요:  <b><font color='red'>105</font></b>
+숫자 105는 문자 i에 해당합니다^^
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>ASCII 코드에서 알파벳 소문자에 해당하는 97 ~ 122 사이의 숫자를 입력하세요:  <b><font color='red'>42</font></b>
+숫자 42는 문자 *에 해당합니다^^
+ASCII 코드에서 알파벳 소문자에 해당하는 97 ~ 122 사이의 숫자를 입력하세요:  <b><font color='red'>52</font></b>
+숫자 52는 문자 4에 해당합니다^^
+ASCII 코드에서 알파벳 소문자에 해당하는 97 ~ 122 사이의 숫자를 입력하세요:  <b><font color='red'>104</font></b>
+숫자 104는 문자 h에 해당합니다^^
+</pre><br> 
+
+		<h4>알고리즘</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+프로그램 시작
+<br>&nbsp; &nbsp;알파벳 소문자에 해당하는 ASCII 코드 숫자를 입력받기
+<br>&nbsp; &nbsp;ASCII 코드 숫자 및 문자 출력하기
+<br>&nbsp; &nbsp;이 때, 입력값이 알파벳 소문자가 아니면 다시 입력 안내
+<br>프로그램 종료
+<br> 
+		</pre>
+	
+		<br><h4>프로그램 코드 <input id='btn' type='button' value='실행순서 및 메모리상태 확인' onclick='clickTimer();'/></h4> 
+	</div>
+	<div>	 
+		<div id = "codeBox">	 
+<pre id="code0" class="unselectable codeClass">	<font color="green">// 파일명 : ./Chapter04/Alphabet.c</font> 
+</pre><pre id="code0" class="unselectable codeClass">	#include &lt;stdio.h&gt;  
+</pre><pre id="code0" class="unselectable codeClass"> 
+</pre><pre id="code0" class="unselectable codeClass">	<font color="green">//<b> 프로그램 시작 </b></font>
+</pre>
+<pre id="code1" class="unselectable codeClass">1	int main() 
+</pre><pre id="code0" class="unselectable codeClass">	{ 
+</pre>
+<pre id="code2" class="unselectable codeClass">2		int lowercase = 0; 
+</pre><pre id="code0" class="unselectable codeClass"> 
+</pre>
+<pre id="code3" class="unselectable codeClass">3		<font color='red' title="명령문을 먼저 실행하고 조건식을 나중에 확인하는 반복문의 시작을 표현">do</font> {									 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 알파벳 소문자에 해당하는 ASCII 코드 숫자를 입력받기  </b></font>
+</pre>
+<pre id="code4" class="unselectable codeClass">4			printf("ASCII 코드에서 알파벳 소문자에 해당하는 97 ~ 122 사이의 숫자를 입력하세요: " ); 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">// 69과 99를 순서대로 입력한다고 가정</font> 
+</pre>
+<pre id="code5" class="unselectable codeClass">5			scanf( "%d", &lowercase );  
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> ASCII 코드 숫자 및 문자 출력하기 </b></font>
+</pre>
+<pre id="code6" class="unselectable codeClass">6			printf("숫자 %d는 문자 %c에 해당합니다^^\n", lowercase, lowercase ); 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 이 때, 입력값이 알파벳 소문자가 아니면 다시 입력 안내 </b></font>
+</pre>
+<pre id="code7" class="unselectable codeClass">7		} <font color='red' title="조건식이 참이면 해당 명령문을 실행하는 반복문">while</font>( <font color='red' title="참은 거짓으로 거짓은 참으로 반환하는 NOT 연산자">!</font>( ( 'a' <font color='red' title="왼쪽값이 오른쪽값보다 작거나 같은지 비교하는 비교연산자"><=</font> lowercase ) &&  ( lowercase <font color='red' title="왼쪽값이 오른쪽값보다 작거나 같은지 비교하는 비교연산자"><=</font> 'z' ) ) );			 
+</pre><pre id="code0" class="unselectable codeClass">		 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 프로그램 종료 </b></font>
+</pre>
+<pre id="code8" class="unselectable codeClass">8		return 0; 
+</pre><pre id="code0" class="unselectable codeClass">	} 
+</pre>
+		</div>	
+		<div id = "floatingBox">
+			<div id = "intermediateResult">
+				<img id = "imageBox">
+				<table style = "border-spacing:0px;margin:0px;">
+				  <tbody id = "variableTable"></tbody>
+				</table>
+			</div>
+			<pre id = "outputBox" class ="outputBox"></pre>		
+		</div>
+	</div>	
+
+	<div id = "box">
+		<br><h4>키워드 설명</h4>
+		<pre style='padding-left:10px; line-height:1.5; width:807px; white-space:normal;'>
+
+<font color='red'><b>do </b></font>
+ &nbsp;do-while문은 해당 명령문을 먼저 실행하고 조건식을 나중에 확인하는 반복문으로 명령문 → 조건식(참) → 명령문 → ... → 조건식(거짓) → do-while문 종료의 순서대로 실행<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>do { <br> &nbsp; 조건식이 참이면 실행하는 명령문<br>} while( 조건식 );</pre><br>
+<font color='red'><b>while </b></font>
+ &nbsp;조건식이 참이면 해당 명령문을 실행하는 반복문으로 조건식(참) → 명령문 → 조건식(참) → 명령문 → ... → 조건식(거짓) → while문 종료의 순서대로 실행<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>while( 조건식 )<br>{ <br> &nbsp; 조건식이 참이면 실행하는 명령문<br>}</pre><br>
+<font color='red'><b>! </b></font>
+ &nbsp;NOT 연산자로 ( !값 )은 값이 참(0이 아닌 값)이면 거짓(0)을 반환하고 값이 거짓(0)이면 참(1)을 반환<br><br>
+<font color='red'><b><= </b></font>
+ &nbsp;비교연산자로 ( 왼쪽값 <= 오른쪽값 )은 왼쪽값이 오른쪽값보다 작거나 같으면 참(1)을 반환하고 아니면 거짓(0)을 반환<br><br>
+		</pre>
+		
+		<h4>실행 순서</h4>
+		<pre id = "sequenceBox" style='width:807px; padding-left:10px; line-height:1.5; word-wrap:break-word;'> </pre>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+			※ 실행순서 및 메모리상태는 A키(이전)및 D키(다음)를 눌러도 확인할 수 있습니다 
+		</pre>
+	<br><br>
+	</div>
+</div>
+</body>
+</html>
+

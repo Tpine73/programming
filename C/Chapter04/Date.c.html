@@ -1,0 +1,178 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./../../util/layout.css">
+<style> #container { float:left; position:absolute; top:0px; left:300px; width:1050px; border:0px solid #bcbcbc; } </style>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="./../../util/CL04/Date.c.js"></script>
+<script src="./../../util/functions.js"></script>
+<body onload='initialize();' onkeydown='on_key_down()'><!--oncontextmenu="return false" ondragstart="return false" onselectstart="return false"-->	 
+
+<ul><li><a href='./.././Chapter04/Elevator.c.html'>엘리베이터</a></li><br>
+<li><a href='./.././Chapter04/Summation.c.html'>합계 Σ 계산</a></li><br>
+<li><a href='./.././Chapter04/Factorial.c.html'>factorial 계산</a></li><br>
+<li><a href='./.././Chapter04/Triangle.c.html'>삼각형 출력</a></li><br>
+<li><a href='./.././Chapter04/Score.c.html'>점수 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/Alphabet.c.html'>알파벳 소문자 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/Weather.c.html'>온도 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/RockPaperScissors.c.html'>가위바위보 입력 안내</a></li><br>
+<li><a href='./.././Chapter04/RollingBall.c.html'>공 굴리기</a></li><br>
+<li><a href='./.././Chapter04/Date.c.html'>달력 출력</a></li><br>
+</ul>
+
+<div id = "container">
+	<table table width='830px' bgcolor='#808080' style='table-layout:fixed; word-break:break-all;'>
+		<tr>
+			<td align='center'>
+				<br><font color='white'><b><h3> 박코치의 C 프로그래밍 </h3></b></font><br>
+			</td>
+		</tr>
+	</table>
+	<div id = "box">
+		<h4>문제</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+시작요일과 말일을 입력받아 달력을 출력하는 문제입니다 이를 해결하는 다음 프로그램을 해석하세요  
+		</pre>
+
+		<br><h4>입출력 예제</h4>
+		<pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>일(0),월(1),화(2),수(3),목(4),금(5),토(6) 중에서 
+이번달 1일은 무슨요일인가요 : <b><font color='red'>2</font></b>
+이번달 말일은 언제인가요 : <b><font color='red'>9</font></b>
+              1    2    3    4    5
+    6    7    8    9
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>일(0),월(1),화(2),수(3),목(4),금(5),토(6) 중에서 
+이번달 1일은 무슨요일인가요 : <b><font color='red'>4</font></b>
+이번달 말일은 언제인가요 : <b><font color='red'>31</font></b>
+                        1    2    3
+    4    5    6    7    8    9   10
+   11   12   13   14   15   16   17
+   18   19   20   21   22   23   24
+   25   26   27   28   29   30   31
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>일(0),월(1),화(2),수(3),목(4),금(5),토(6) 중에서 
+이번달 1일은 무슨요일인가요 : <b><font color='red'>1</font></b>
+이번달 말일은 언제인가요 : <b><font color='red'>30</font></b>
+         1    2    3    4    5    6
+    7    8    9   10   11   12   13
+   14   15   16   17   18   19   20
+   21   22   23   24   25   26   27
+   28   29   30
+</pre><br> 
+
+		<h4>알고리즘</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+프로그램 시작
+<br>&nbsp; &nbsp;시작요일 및 말일 입력 받기
+<br>&nbsp; &nbsp;1일 이전은 공백 출력
+<br>&nbsp; &nbsp;1일부터 말일까지 출력
+<br>&nbsp; &nbsp;&nbsp; &nbsp;새로운 일주일은 새 줄에 출력
+<br>&nbsp; &nbsp;&nbsp; &nbsp;일주일을 한줄에 출력
+<br>프로그램 종료
+<br> 
+		</pre>
+	
+		<br><h4>프로그램 코드 <input id='btn' type='button' value='실행순서 및 메모리상태 확인' onclick='clickTimer();'/></h4> 
+	</div>
+	<div>	 
+		<div id = "codeBox">	 
+<pre id="code0" class="unselectable codeClass">	<font color="green">// 파일명 : ./Chapter04/Date.c</font> 
+</pre><pre id="code0" class="unselectable codeClass">	#include &lt;stdio.h&gt;  
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">	<font color="green">//<b> 프로그램 시작 </b></font>
+</pre>
+<pre id="code1" class="unselectable codeClass">1	int main(void)  
+</pre><pre id="code0" class="unselectable codeClass">	{ 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 날짜 및 요일 초기화</font> 
+</pre><pre id="code0" class="unselectable codeClass">		int day = 0; 
+</pre><pre id="code0" class="unselectable codeClass">		int lastDay = 0; 
+</pre><pre id="code0" class="unselectable codeClass">		int week = 0; 
+</pre><pre id="code0" class="unselectable codeClass">		int sunday = 0;		 
+</pre>
+<pre id="code2" class="unselectable codeClass">2		int firstDay = 0; 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 시작요일 및 말일 입력 받기 </b></font>
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 시작요일을 입력 받기</font> 
+</pre>
+<pre id="code3" class="unselectable codeClass">3		printf( "일(0),월(1),화(2),수(3),목(4),금(5),토(6) 중에서 \n이번달 1일은 무슨요일인가요 : " ); 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 화요일(2)을 입력한다고 가정</font> 
+</pre>
+<pre id="code4" class="unselectable codeClass">4		scanf("%d", &firstDay ); 
+</pre><pre id="code0" class="unselectable codeClass">		 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 말일 입력 받기</font>  
+</pre>
+<pre id="code5" class="unselectable codeClass">5		printf( "이번달 말일은 언제인가요 : " ); 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 9일을 입력한다고 가정</font> 
+</pre>
+<pre id="code6" class="unselectable codeClass">6		scanf("%d", &lastDay ); 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 1일 이전은 공백 출력 </b></font>
+</pre>
+<pre id="code7" class="unselectable codeClass">7		<font color='red' title="초기식, 조건식, 증감식으로 구성된 반복문">for</font>( week = sunday; 										 
+</pre>
+<pre id="code8" class="unselectable codeClass">8					week < firstDay;  
+</pre>
+<pre id="code9" class="unselectable codeClass">9									week <font color='red' title="a = a + 1을 실행하는 증가연산자">++</font>  )				 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre>
+<pre id="code10" class="unselectable codeClass">10			printf( "     " ); 
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">		 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 1일부터 말일까지 출력 </b></font>
+</pre>
+<pre id="code11" class="unselectable codeClass">11		<font color='red' title="초기식, 조건식, 증감식으로 구성된 반복문">for</font> ( day = 1; 									 
+</pre>
+<pre id="code12" class="unselectable codeClass">12				day <font color='red' title="왼쪽값이 오른쪽값보다 작거나 같은지 비교하는 비교연산자"><=</font> lastDay;  						 
+</pre>
+<pre id="code13" class="unselectable codeClass">13							week <font color='red' title="a = a + 1을 실행하는 증가연산자">++</font> , day <font color='red' title="a = a + 1을 실행하는 증가연산자">++</font>  )		 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 새로운 일주일은 새 줄에 출력 </b></font>
+</pre>
+<pre id="code14" class="unselectable codeClass">14			if ( ( week > 0 ) && ( ( week % 7 ) == sunday ) ) 
+</pre><pre id="code0" class="unselectable codeClass">			{ 
+</pre>
+<pre id="code15" class="unselectable codeClass">15				printf( "\n"); 
+</pre><pre id="code0" class="unselectable codeClass">			} 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 일주일을 한줄에 출력 </b></font>
+</pre>
+<pre id="code16" class="unselectable codeClass">16			printf( "<font color='red' title="5칸을 확보하고 정수 형식으로 출력">%5d</font>", day );									 
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 프로그램 종료 </b></font>
+</pre>
+<pre id="code17" class="unselectable codeClass">17		return 0; 
+</pre><pre id="code0" class="unselectable codeClass">	} 
+</pre>
+		</div>	
+		<div id = "floatingBox">
+			<div id = "intermediateResult">
+				<img id = "imageBox">
+				<table style = "border-spacing:0px;margin:0px;">
+				  <tbody id = "variableTable"></tbody>
+				</table>
+			</div>
+			<pre id = "outputBox" class ="outputBox"></pre>		
+		</div>
+	</div>	
+
+	<div id = "box">
+		<br><h4>키워드 설명</h4>
+		<pre style='padding-left:10px; line-height:1.5; width:807px; white-space:normal;'>
+
+<font color='red'><b>for </b></font>
+ &nbsp;초기식, 조건식, 증감식으로 구성된 반복문으로 초기식 → 조건식(참) → 명령문 → 증감식 → 조건식(참) → 명령문 → ...  → 증감식 → 조건식(거짓) → for문 종료의 순서대로 실행<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>for( 초기식; 조건식; 증감식 )<br>{ <br> &nbsp; 조건식이 참이면 실행하는 명령문<br>}</pre><br>
+<font color='red'><b>++ </b></font>
+ &nbsp;증가연산자로 a++은 a = a + 1를 의미하며 변수공간a <span style ='border:1px solid #000000; padding:3px;'>&nbsp;a값 </span>을 변수공간a <span style ='border:1px solid #000000; padding:3px;'>&nbsp;a값 + 1 </span>로 변경<br><br>
+<font color='red'><b><= </b></font>
+ &nbsp;비교연산자로 ( 왼쪽값 <= 오른쪽값 )은 왼쪽값이 오른쪽값보다 작거나 같으면 참(1)을 반환하고 아니면 거짓(0)을 반환<br><br>
+<font color='red'><b>%5d </b></font>
+ &nbsp;5칸을 확보하고 정수 형식으로 출력<br>예를 들어 28은 5칸중에서 3칸에 빈칸을 출력 후 남은 2칸에 28을 출력<br><br>
+		</pre>
+		
+		<h4>실행 순서</h4>
+		<pre id = "sequenceBox" style='width:807px; padding-left:10px; line-height:1.5; word-wrap:break-word;'> </pre>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+			※ 실행순서 및 메모리상태는 A키(이전)및 D키(다음)를 눌러도 확인할 수 있습니다 
+		</pre>
+	<br><br>
+	</div>
+</div>
+</body>
+</html>
+
