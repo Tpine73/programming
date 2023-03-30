@@ -133,10 +133,6 @@
  &nbsp;초기식, 조건식, 증감식으로 구성된 반복문으로 초기식 → 조건식(참) → 명령문 → 증감식 → 조건식(참) → 명령문 → ...  → 증감식 → 조건식(거짓) → for문 종료의 순서대로 실행<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>for( 초기식; 조건식; 증감식 )<br>{ <br> &nbsp; 조건식이 참이면 실행하는 명령문<br>}</pre><br>
 <font color='red'><b>sleep </b></font>
  &nbsp;지정한 시간만큼 대기하는 함수<br>리눅스/유닉스 버전 sleep(초)<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>#include &lt;stdio.h&gt; 					<br>#include &lt;unistd.h&gt;<br>int main()<br>{<br>	printf( "3초 대기 시작\n");<br>	sleep(3);<br>	printf( "3초 대기 종료\n");<br>	return 0;<br>}</pre>윈도우 버전 Sleep(밀리초)<pre style='width:790px; margin:0; padding:10px; border:1px solid #bcbcbc'>#include &lt;stdio.h&gt; 					<br>#include &lt;Windows.h&gt;<br>int main()<br>{<br>	printf( "3초 대기 시작\n");<br>	Sleep(3000);<br>	printf( "3초 대기 종료\n");<br>	return 0;<br>}</pre><br>
-<font color='red'><b>system </b></font>
- &nbsp;명령어를 운영체제에 전달하여 실행시키는 함수<br><br>
-<font color='red'><b>cls </b></font>
- &nbsp;clear the screen의 약어로 콘솔 화면을 깨끗하게 초기화하는 운영체제 명령어<br><br>
 		</pre>
 		
 		<h4>실행 순서</h4>
