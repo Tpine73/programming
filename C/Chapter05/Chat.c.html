@@ -1,0 +1,200 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./../../util/layout.css">
+<style> #container { float:left; position:absolute; top:0px; left:300px; width:1050px; border:0px solid #bcbcbc; } </style>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="./../../util/CL05/Chat.c.js"></script>
+<script src="./../../util/functions.js"></script>
+<body onload='initialize();' onkeydown='on_key_down()'><!--oncontextmenu="return false" ondragstart="return false" onselectstart="return false"-->	 
+
+<ul><li><a href='./.././Chapter05/LittleStar.c.html'>작은별</a></li><br>
+<li><a href='./.././Chapter05/Alphabet.c.html'>소문자 대문자 변환</a></li><br>
+<li><a href='./.././Chapter05/ScoreSort.c.html'>점수 정렬</a></li><br>
+<li><a href='./.././Chapter05/Date.c.html'>살아온 날 계산</a></li><br>
+<li><a href='./.././Chapter05/TrainSeat.c.html'>기차 좌석 예매</a></li><br>
+<li><a href='./.././Chapter05/FamilyName.c.html'>이름 성 비교</a></li><br>
+<li><a href='./.././Chapter05/Weather.c.html'>기상특보별 주의사항</a></li><br>
+<li><a href='./.././Chapter05/RockPaperScissors.c.html'>가위바위보</a></li><br>
+<li><a href='./.././Chapter05/WordSort.c.html'>단어 정렬</a></li><br>
+<li><a href='./.././Chapter05/Chat.c.html'>챗봇 대화</a></li><br>
+</ul>
+
+<div id = "container">
+	<table table width='830px' bgcolor='#808080' style='table-layout:fixed; word-break:break-all;'>
+		<tr>
+			<td align='center'>
+				<br><font color='white'><b><h3> 박코치의 C 프로그래밍 </h3></b></font><br>
+			</td>
+		</tr>
+	</table>
+	<div id = "box">
+		<h4>문제</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+챗봇과 대화하는 문제입니다 이를 해결하는 다음 프로그램을 해석하세요 예를 들어, 사용자가 아래와 같은 문자열을 포함해서 입력하면, 프로그램은 대응되는 시스템 답변을 출력합니다. 
+이 때, 사용자가 '바이'를 입력하면 '그래 안녕! 담에 또 봐~'를 출력 후 대화를 종료하고, 적절한 답변을 못 찾으면 '뭐 딴거 재밌는거 없을까?'를 출력합니다.<pre>
+사용자 입력  시스템 답변
+이름이 뭐    난 재석이야. 국민MC 유재석과 이름이 같아. ㅎㅎㅎ 넌 몇 살이니?
+몇 살        난 20살이야. 남들이 다 부러워하는 나이지. 넌 어디 살아?
+어디 살      난 홍지동 살아. 북한산 아래 있어서 공기가 무지 맑아.ㅎㅎㅎ 취미가 뭐니?
+만나서 반가  나도 반가워 친하게 지내자
+</pre> 
+		</pre>
+
+		<br><h4>입출력 예제</h4>
+		<pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>[시스템] 안녕? 넌 이름이 모야?
+ 사용자: <b><font color='red'>난 희철 만나서 반가워</font></b>
+[시스템] 나도 반가워 친하게 지내자
+ 사용자: <b><font color='red'>앗! 미안 지금 갑자기 나가봐야 해~ 다음에 또 봐 바이</font></b>
+[시스템] 그래 안녕! 담에 또 봐~
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>[시스템] 안녕? 넌 이름이 모야?
+ 사용자: <b><font color='red'>난 희철 넌 이름이 뭐야?</font></b>
+[시스템] 난 재석이야. 국민MC 유재석과 이름이 같아. ㅎㅎㅎ 넌 몇 살이니?
+ 사용자: <b><font color='red'>난 20살 넌 몇 살이야?</font></b>
+[시스템] 난 20살이야. 남들이 다 부러워하는 나이지. 넌 어디 살아?
+ 사용자: <b><font color='red'>종로 넌 어디 살아?</font></b>
+[시스템] 난 홍지동 살아. 북한산 아래 있어서 공기가 무지 맑아.ㅎㅎㅎ 취미가 뭐니?
+ 사용자: <b><font color='red'>TV 보기~ 앗! 미안 지금 갑자기 나가봐야 해~ 다음에 또 봐 바이</font></b>
+[시스템] 그래 안녕! 담에 또 봐~
+</pre><br><pre class='selectable' style='width:807px; margin:0; padding:10px; border:1px solid #bcbcbc;'>[시스템] 안녕? 넌 이름이 모야?
+ 사용자: <b><font color='red'>안알랴줌</font></b>
+[시스템] 뭐 딴거 재밌는거 없을까?
+ 사용자: <b><font color='red'>어 없어 </font></b>
+[시스템] 뭐 딴거 재밌는거 없을까?
+ 사용자: <b><font color='red'>너 좀 이상한 아이구나</font></b>
+[시스템] 뭐 딴거 재밌는거 없을까?
+ 사용자: <b><font color='red'>재미없어 바이~</font></b>
+[시스템] 그래 안녕! 담에 또 봐~
+</pre><br> 
+
+		<h4>알고리즘</h4>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+프로그램 시작
+<br>&nbsp; &nbsp;사용자와 시스템의 대화 반복
+<br>&nbsp; &nbsp;&nbsp; &nbsp;사용자 입력
+<br>&nbsp; &nbsp;&nbsp; &nbsp;시스템 답변 출력
+<br>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;준비한 대화쌍에서
+<br>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;적절한 답변을 찾으면 시스템 답변을 출력
+<br>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;적절한 답변을 못 찾으면 '뭐 딴거 재밌는거 없을까?' 출력
+<br>프로그램 종료
+<br> 
+		</pre>
+	
+		<br><h4>프로그램 코드 <input id='btn' type='button' value='실행순서 및 메모리상태 확인' onclick='clickTimer();'/></h4> 
+	</div>
+	<div>	 
+		<div id = "codeBox">	 
+<pre id="code0" class="unselectable codeClass">	<font color="green">// 파일명 : ./Chapter05/Chat.c</font> 
+</pre><pre id="code0" class="unselectable codeClass">	#include &lt;stdio.h&gt; 
+</pre><pre id="code0" class="unselectable codeClass">	#include &lt;<font color='red' title="문자열 관련 함수 정보를 가지고 있는 헤더파일">string.h</font>>					 
+</pre><pre id="code0" class="unselectable codeClass"> 
+</pre><pre id="code0" class="unselectable codeClass">	<font color="green">//<b> 프로그램 시작 	</b></font>
+</pre>
+<pre id="code1" class="unselectable codeClass">1	int main( void ) 
+</pre><pre id="code0" class="unselectable codeClass">	{ 
+</pre><pre id="code0" class="unselectable codeClass">		int	index = 0; 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 한 칸당 최대 128byte 문자열을 저장할 수 있는 1차원 배열을 선언 // [주석포함]</font> 
+</pre><pre id="code0" class="unselectable codeClass">		char	input<font color='red' title="한 칸당 최대 128byte 문자열을 저장할 수 있는 1차원 배열을 선언">[128]</font> = <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>\0<font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>; 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">// 한 칸당 최대 128byte 문자열을 저장할 수 있는 2칸씩 4줄로 구성된 3차원 배열을 선언 // [주석포함]</font> 
+</pre><pre id="code0" class="unselectable codeClass">		char	dialogue<font color='red' title="한 칸당 최대 128byte 문자열을 저장할 수 있는 2칸씩 4줄로 구성된 3차원 배열을 선언">[4][2][128]</font> =   
+</pre><pre id="code0" class="unselectable codeClass">			<font color='red' title="여는 중괄호로 배열을 선언하면서 초기화할 때 사용">{</font> <font color='red' title="여는 중괄호로 배열을 선언하면서 초기화할 때 사용">{</font> <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>이름이 뭐<font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>, <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>난 재석이야. 국민MC 유재석과 이름이 같아. ㅎㅎㅎ 넌 몇 살이니?<font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font> <font color='red' title="닫는 중괄호로 배열을 선언하면서 초기화할 때 사용">}</font>, 
+</pre><pre id="code0" class="unselectable codeClass">			  <font color='red' title="여는 중괄호로 배열을 선언하면서 초기화할 때 사용">{</font> <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>몇 살<font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>, <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>난 20살이야. 남들이 다 부러워하는 나이지. 넌 어디 살아?<font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font> <font color='red' title="닫는 중괄호로 배열을 선언하면서 초기화할 때 사용">}</font>, 
+</pre><pre id="code0" class="unselectable codeClass">			  <font color='red' title="여는 중괄호로 배열을 선언하면서 초기화할 때 사용">{</font> <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>어디 살<font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>, <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>난 홍지동 살아. 북한산 아래 있어서 공기가 무지 맑아.ㅎㅎㅎ 취미가 뭐니?<font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font> <font color='red' title="닫는 중괄호로 배열을 선언하면서 초기화할 때 사용">}</font>, 
+</pre><pre id="code0" class="unselectable codeClass">			  <font color='red' title="여는 중괄호로 배열을 선언하면서 초기화할 때 사용">{</font> <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>만나서 반가<font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>, <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>나도 반가워 친하게 지내자<font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font> <font color='red' title="닫는 중괄호로 배열을 선언하면서 초기화할 때 사용">}</font> <font color='red' title="닫는 중괄호로 배열을 선언하면서 초기화할 때 사용">}</font>; 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 사용자와 시스템의 대화 반복 </b></font>
+</pre>
+<pre id="code2" class="unselectable codeClass">2		printf( <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>[시스템] 안녕? 넌 이름이 모야?\n 사용자: <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font> ); 
+</pre>
+<pre id="code3" class="unselectable codeClass">3		while( 1 ) 
+</pre><pre id="code0" class="unselectable codeClass">		{ 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 사용자 입력 	</b></font>
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">// 첫번째는 '난 희철 만나서 반가워', 두번째는 '앗! 미안 지금 갑자기 나가봐야 해~ 다음에 또 봐 바이'라고 입력한다고 가정</font>  
+</pre>
+<pre id="code4" class="unselectable codeClass">4			<font color='red' title="파일에서 한 줄씩 읽는 함수">fgets</font>( input, 128, <font color='red' title="키보드 등의 표준 입력">stdin</font> ); 			 
+</pre><pre id="code0" class="unselectable codeClass">	 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 시스템 답변 출력 			</b></font>
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">// 사용자가 '바이'를 입력하면 '그래 안녕! 담에 또 봐~'를 출력 후 대화를 종료</font>  
+</pre>
+<pre id="code5" class="unselectable codeClass">5			if ( <font color='red' title="대상 문자열에서 검색할 문자열을 찾은 위치를 반환하는 함수">strstr</font>( input, <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>바이<font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font> ) != NULL ) 		 
+</pre><pre id="code0" class="unselectable codeClass">			{ 
+</pre><pre id="code0" class="unselectable codeClass">				printf( <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>[시스템] 그래 안녕! 담에 또 봐~\n<font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font> ); 
+</pre>
+<pre id="code6" class="unselectable codeClass">6				break; 
+</pre><pre id="code0" class="unselectable codeClass">			} 
+</pre><pre id="code0" class="unselectable codeClass"> 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 준비한 대화쌍에서 </b></font>
+</pre>
+<pre id="code7" class="unselectable codeClass">7			for ( index = 0; index < 4; index++ ) 
+</pre><pre id="code0" class="unselectable codeClass">			{ 
+</pre><pre id="code0" class="unselectable codeClass">				<font color="green">//<b> 적절한 답변을 찾으면 시스템 답변을 출력 </b></font>
+</pre>
+<pre id="code8" class="unselectable codeClass">8				if ( <font color='red' title="대상 문자열에서 검색할 문자열을 찾은 위치를 반환하는 함수">strstr</font>( input, dialogue[index][0] ) != NULL ) 		 
+</pre><pre id="code0" class="unselectable codeClass">				{ 
+</pre><pre id="code0" class="unselectable codeClass">					printf( <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>[시스템] <font color='red' title="문자열  형식으로 입출력">%s</font>\n 사용자: <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>, dialogue[index][1] ); 	 
+</pre>
+<pre id="code9" class="unselectable codeClass">9					break; 
+</pre><pre id="code0" class="unselectable codeClass">				} 
+</pre><pre id="code0" class="unselectable codeClass">			} 
+</pre><pre id="code0" class="unselectable codeClass">			 
+</pre><pre id="code0" class="unselectable codeClass">			<font color="green">//<b> 적절한 답변을 못 찾으면 '뭐 딴거 재밌는거 없을까?' 출력 </b></font>
+</pre>
+<pre id="code10" class="unselectable codeClass">10			if ( index == 4 ) 
+</pre><pre id="code0" class="unselectable codeClass">			{ 
+</pre>
+<pre id="code11" class="unselectable codeClass">11				printf( <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font>[시스템] 뭐 딴거 재밌는거 없을까?\n 사용자: <font color='red' title="문자열의 시작과 끝을 표현하는 기호">"</font> ); 
+</pre><pre id="code0" class="unselectable codeClass">			} 
+</pre><pre id="code0" class="unselectable codeClass">		} 
+</pre><pre id="code0" class="unselectable codeClass"> 
+</pre><pre id="code0" class="unselectable codeClass">		<font color="green">//<b> 프로그램 종료 	</b></font>
+</pre>
+<pre id="code12" class="unselectable codeClass">12		return 0; 
+</pre><pre id="code0" class="unselectable codeClass">	} 
+</pre>
+		</div>	
+		<div id = "floatingBox">
+			<div id = "intermediateResult">
+				<img id = "imageBox">
+				<table style = "border-spacing:0px;margin:0px;">
+				  <tbody id = "variableTable"></tbody>
+				</table>
+			</div>
+			<pre id = "outputBox" class ="outputBox"></pre>		
+		</div>
+	</div>	
+
+	<div id = "box">
+		<br><h4>키워드 설명</h4>
+		<pre style='padding-left:10px; line-height:1.5; width:807px; white-space:normal;'>
+
+<font color='red'><b>string.h </b></font>
+ &nbsp;문자열 관련 함수 정보를 가지고 있는 헤더파일<br><br>
+<font color='red'><b>[128] </b></font>
+ &nbsp;한 칸당 최대 128byte 문자열을 저장할 수 있는 1차원 배열을 선언<br><br>
+<font color='red'><b>" </b></font>
+ &nbsp;문자열의 시작과 끝을 표현하는 기호<br><br>
+<font color='red'><b>[4][2][128] </b></font>
+ &nbsp;한 칸당 최대 128byte 문자열을 저장할 수 있는 2칸씩 4줄로 구성된 3차원 배열을 선언<br><br>
+<font color='red'><b>{ </b></font>
+ &nbsp;여는 중괄호로 배열을 선언하면서 초기화할 때 사용<br><br>
+<font color='red'><b>} </b></font>
+ &nbsp;닫는 중괄호로 배열을 선언하면서 초기화할 때 사용<br><br>
+<font color='red'><b>fgets </b></font>
+ &nbsp;file get string의 줄임말로 fgets( 문자열 변수, 한번에 읽어들일 최대 길이, 파일 포인터 변수 )는 파일에서 최대 길이 이하로 한 줄(\n) 단위로 읽어서 문자열 변수에 저장<br><br>
+<font color='red'><b>stdin </b></font>
+ &nbsp;키보드 등의 표준 입력<br><br>
+<font color='red'><b>strstr </b></font>
+ &nbsp;string string의 줄임말로, strstr( 대상문자열, 검색할 문자열 )은 대상문자열에서 검색할 문자열를 찾은 위치의 주소값을 반환하고 못 찾으면 NULL을 반환<br><br>예를 들어 변수공간 a <span style ='border:1px solid #000000; padding:3px;'>&nbsp;Hello, World! </span>와 변수공간b <span style ='border:1px solid #000000; padding:3px;'>&nbsp;World </span>에 대해서 strstr( a, b )을 실행하면 변수공간a에서 'W'가 저장된 위치의 주소값을 반환<br><br><br>
+<font color='red'><b>%s </b></font>
+ &nbsp;문자열  형식으로 입출력<br><br>
+		</pre>
+		
+		<h4>실행 순서</h4>
+		<pre id = "sequenceBox" style='width:807px; padding-left:10px; line-height:1.5; word-wrap:break-word;'> </pre>
+		<pre style='width:807px; padding-left:10px; line-height:1.5; white-space:normal;'>
+			※ 실행순서 및 메모리상태는 A키(이전)및 D키(다음)를 눌러도 확인할 수 있습니다 
+		</pre>
+	<br><br>
+	</div>
+</div>
+</body>
+</html>
+
