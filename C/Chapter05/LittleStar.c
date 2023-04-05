@@ -29,9 +29,6 @@ int main()
 		fflush( stdout );
 		sleep(1);
 	}
-
-
-
 	
 	// 프로그램 종료 
 	return 0;
