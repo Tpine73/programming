@@ -11,6 +11,6 @@
 	// JDBC Driver : ex) com.mysql.jdbc.Driver, org.gjt.mm.mysql.Driver
 	final String jdbc_driver = "com.mysql.jdbc.Driver"; 
 	 
-	// Log File
+	// Log File ex) /var/lib/tomcat8/webapps/ROOT/book/jsp/log.txt, /usr/local/tomcat/webapps/ROOT/book/jsp/log.txt
 	final String logFileName = "/usr/local/tomcat/webapps/ROOT/book/jsp/log.txt";	 
 %>
