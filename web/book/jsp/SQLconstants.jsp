@@ -1,9 +1,9 @@
 <%
-	// MySQL ID : MySQL 설치시 아이디 ex) teamA, teamB, teamC ...
-	final String mySQL_id = "teamA"; 	
+	// MySQL ID : MySQL 설치시 아이디 ex) root, test, ...
+	final String mySQL_id = "test"; 	
 
-	// MySQL Password	
-	final String mySQL_password = "HAGF9221";
+	// MySQL Password : MySQL 설치시 비밀번호	
+	final String mySQL_password = "test";
 	
 	// MySQL Database
 	final String mySQL_database = "jdbc:mysql://localhost:3306/BookDB"; 
