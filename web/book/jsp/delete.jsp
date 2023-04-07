@@ -12,21 +12,16 @@
 		<BR><BR>  
 <%@ include file="./SQLconstants.jsp"%>
 <% 
-		// MySQL 관련 변수
-		Connection Conn = null;
-		Statement  stmt = null;
-		ResultSet  rs = null;
-
 		try
 		{
 			// MySQL 드라이버 연결
 			Class.forName( jdbc_driver ); 
-			Conn = DriverManager.getConnection( mySQL_database, mySQL_id, mySQL_password ); 
-			stmt = Conn.createStatement();
+			Connection con = DriverManager.getConnection( mySQL_database, mySQL_id, mySQL_password ); 
+			Statement stmt = con.createStatement();
 
 			// MySQL 검색 실행 및 결과 출력
 			String query = "select * from book;";
-			rs = stmt.executeQuery( query );
+			ResultSet rs = stmt.executeQuery( query );
 			while( rs.next() )
 			{			
 				out.print( "<BR>ID : " + rs.getString(1) 
@@ -40,7 +35,7 @@
 			// MySQL 드라이버 연결 해제
 			rs.close(); 
 			stmt.close();
-			Conn.close();
+			con.close();
 		}
 		// 예외 처리
 		catch( SQLException e )

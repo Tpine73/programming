@@ -4,15 +4,13 @@
 	request.setCharacterEncoding("UTF-8");
 	String id = request.getParameter( "id" );
 	String message = null;	
-	Connection con = null;
-	Statement stmt = null;
 
 	try
 	{
 		// MySQL 드라이버 연결 
 		Class.forName( jdbc_driver ); 
-		con = DriverManager.getConnection( mySQL_database, mySQL_id, mySQL_password ); 
-		stmt = con.createStatement();	
+		Connection con = DriverManager.getConnection( mySQL_database, mySQL_id, mySQL_password ); 
+		Statement stmt = con.createStatement();	
 
 		// MySQL 책 삭제 실행 	
 		String query = "delete from book where id = '" + id + "';";

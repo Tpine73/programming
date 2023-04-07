@@ -8,17 +8,14 @@
 	String publisher = request.getParameter( "publisher" );
 	String date = request.getParameter( "date" );
 	String image = request.getParameter( "image" );
-	
 	String message = null;
-	Connection con = null;
-	Statement stmt = null;
 
 	try
 	{
 		// MySQL 드라이버 연결 
 		Class.forName( jdbc_driver ); 
-		con = DriverManager.getConnection( mySQL_database, mySQL_id, mySQL_password ); 
-		stmt = con.createStatement();
+		Connection con = DriverManager.getConnection( mySQL_database, mySQL_id, mySQL_password ); 
+		Statement stmt = con.createStatement();
 
 		// MySQL 책 추가 실행 	
 		String query = "INSERT INTO book( id, title, author, publisher, date, image ) VALUES ( '" + id + "', '" + title + "', '" + author + "', '" + publisher + "', '" + date + "', '" + image + "');"; 
