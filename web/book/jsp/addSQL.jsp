@@ -22,11 +22,11 @@
 		query = new String( query.getBytes("utf-8") );
 		if ( stmt.executeUpdate( query ) > 0 )
 		{
-			message = "책 (" + title + ")을 등록하였습니다"; 
+			message = "책(" + title + ")을 등록하였습니다"; 
 		}
 		else 
 		{
-			message = "책 (" + title + ")을 등록할 수 없습니다 "; 
+			message = "책(" + title + ")을 등록할 수 없습니다 "; 
 		}
 
 		// MySQL 드라이버 연결 해제
