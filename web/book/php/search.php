@@ -1,6 +1,5 @@
 <?php 
 	header('Content-Type: text/html; charset=UTF-8');
-	$message = "";
 ?>
 <html>
 	<HEAD>      
@@ -35,13 +34,13 @@
 		<BR> <BR> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 		<BR> <BR>  
 <?php 
-	// MySQL 드라이버 연결 
-	include("./SQLconstants.php"); 
-	$conn = mysqli_connect($mySQL_host,$mySQL_id,$mySQL_password,$mySQL_database) or die ("Can't access DB");
-
 	// 전달 받은 메시지 확인
 	$message =  $_POST['message'];
 	$message = ( ( ( $message == null ) || ( $message == "" ) ) ? "_%" : $message );
+
+	// MySQL 드라이버 연결 
+	include("./SQLconstants.php"); 
+	$conn = mysqli_connect($mySQL_host,$mySQL_id,$mySQL_password,$mySQL_database) or die ("Can't access DB");
 
 	// MySQL 검색 실행 및 결과 출력
 	$query = "select * from book where title like '%".$message."%';";

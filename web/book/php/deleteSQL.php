@@ -11,11 +11,11 @@
 	$result = mysqli_query( $conn, $query );
 	if( $result ) 
 	{	
-		$message = "ID ".$message."인 책을 삭제하였습니다."; 
+		$message = "ID(".$id.")인 책을 삭제하였습니다."; 
 	} 
 	else 
 	{
-		$message = "ID ".$message."인 책을 찾을 수 없습니다. 삭제시 책 제목이 아니고 책 ID를 입력해주세요."; 
+		$message = "ID(".$id.")인 책을 찾을 수 없습니다. 삭제시 책 제목이 아니고 책 ID를 입력해주세요."; 
 	} 
 
 	// MySQL 드라이버 연결 해제

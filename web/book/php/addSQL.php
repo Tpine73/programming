@@ -1,6 +1,5 @@
 <?php 
 	header('Content-Type: text/html; charset=UTF-8');
-	include("./SQLconstants.php");
 
 	$id = $_POST['id'];
 	$title = $_POST['title'];
@@ -11,6 +10,7 @@
 	$message = "";
 
 	// MySQL 드라이버 연결 
+	include("./SQLconstants.php");
 	$conn = mysqli_connect( $mySQL_host, $mySQL_id, $mySQL_password, $mySQL_database ) or die( "Can't access DB" );
 
 	// MySQL 책 추가 실행 	
