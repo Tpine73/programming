@@ -1,0 +1,10 @@
+Time: 2023-04-04 03:56:24.254 SessionID: BDD520224D787B4FC45601E3F2DEA207 URI: /book/jsp/search.jsp Message: _%와 관련된 책을 찾았습니다
+Time: 2023-04-04 03:56:28.925 SessionID: BDD520224D787B4FC45601E3F2DEA207 URI: /book/jsp/addSQL.jsp Message: 책 (13)을 등록하였습니다
+Time: 2023-04-04 03:56:28.951 SessionID: BDD520224D787B4FC45601E3F2DEA207 URI: /book/jsp/search.jsp Message:  * 책 (13)을 등록하였습니다와 관련된 책을 찾았습니다
+Time: 2023-04-04 03:56:31.297 SessionID: BDD520224D787B4FC45601E3F2DEA207 URI: /book/jsp/search.jsp Message: _%와 관련된 책을 찾았습니다
+Time: 2023-04-04 03:59:55.817 SessionID: BDD520224D787B4FC45601E3F2DEA207 URI: /book/jsp/deleteSQL.jsp Message: ID null인 책을 삭제하였습니다.
+Time: 2023-04-04 03:59:55.848 SessionID: BDD520224D787B4FC45601E3F2DEA207 URI: /book/jsp/search.jsp Message:  * ID null인 책을 삭제하였습니다.와 관련된 책을 찾았습니다
+Time: 2023-04-04 03:59:58.291 SessionID: BDD520224D787B4FC45601E3F2DEA207 URI: /book/jsp/search.jsp Message: _%와 관련된 책을 찾았습니다
+Time: 2023-04-04 04:03:43.221 SessionID: BDD520224D787B4FC45601E3F2DEA207 URI: /book/jsp/addSQL.jsp Message: 책 ()을 등록하였습니다
+Time: 2023-04-04 04:03:43.255 SessionID: BDD520224D787B4FC45601E3F2DEA207 URI: /book/jsp/search.jsp Message:  * 책 ()을 등록하였습니다와 관련된 책을 찾았습니다
+Time: 2023-04-04 04:03:46.339 SessionID: BDD520224D787B4FC45601E3F2DEA207 URI: /book/jsp/search.jsp Message: _%와 관련된 책을 찾았습니다
