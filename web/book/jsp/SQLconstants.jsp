@@ -4,7 +4,7 @@
 
 	// MySQL Password : MySQL 설치시 비밀번호	
 	final String mySQL_password = "test";
-	
+	 
 	// MySQL Database
 	final String mySQL_database = "jdbc:mysql://localhost:3306/BookDB"; 
 
