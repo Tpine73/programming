@@ -1,5 +1,5 @@
 <%
-	// MySQL ID : MySQL ¼³Ä¡½Ã ¾ÆÀÌµð ex) teamA, teamB, teamC ...
+	// MySQL ID : MySQL ì„¤ì¹˜ì‹œ ì•„ì´ë”” ex) teamA, teamB, teamC ...
 	final String mySQL_id = "teamA"; 	
 
 	// MySQL Password	
